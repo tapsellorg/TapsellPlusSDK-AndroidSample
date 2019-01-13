@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TapsellPlusSDK-AndroidSample</string>
+    <string name="rewarded_video">Rewarded Video</string>
+    <string name="show">Show</string>
+    <string name="request">Request</string>
+    <string name="native_banner">Native Banner</string>
+</resources>
