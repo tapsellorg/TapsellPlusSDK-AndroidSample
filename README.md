@@ -25,7 +25,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.sdk:tapsell-sdk-android:4.1.3'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.0.1'
 }
 ```
 
@@ -108,9 +108,9 @@ import ir.tapsell.plus.AdShowListener;
 
 ## <div dir="rtl">آموزش تبلیغات بنر همسان</div>
 
-<div dir="rtl">ابتدا از پنل یک تبلیغگاه (zone) بنر همسان بسازید و zoneId رو زمان درخواست و نمایش تبلیغ استفاده کنید</div>
+<div dir="rtl">ابتدا از پنل یک تبلیغگاه (zone) بنر همسان بسازید و zoneId را زمان درخواست و نمایش تبلیغ استفاده کنید</div>
 
-<div dir="rtl">در صفحه‌ای که قصد دارید بنر همسان نمایش بدید باید یک  view اضافه کنید</div>
+<div dir="rtl">در صفحه‌ای که قصد دارید بنر همسان نمایش بدهید باید یک  view اضافه کنید</div>
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -128,7 +128,7 @@ import ir.tapsell.plus.AdShowListener;
 </FrameLayout>
 ```
 
-<div dir="rtl">باید یک layout مطابق شکلی که قصد دارید تبلیغ نمایش داده بشه بسازید و id ویوهای مختلف مطابق با این جدول باشه</div>
+<div dir="rtl">باید یک layout دلخواه مطابق شکلی که قصد دارید تبلیغ نمایش داده بشود بسازید و id بخش‌های مختلف مطابق با جدول زیر باشد:</div>
 
 |              |              id              |
 |:------------:|:----------------------------:|
@@ -139,11 +139,11 @@ import ir.tapsell.plus.AdShowListener;
 |    banner    |    tapsell_nativead_banner   |
 |    button    |     tapsell_nativead_cta     |
 
-<div dir="rtl">میتونید از view‌ای که برای این منظور از قبل آماده شده با id زیر استفاده کنید</div>
+<div dir="rtl">همچنین می‌توانید از view‌ای که برای این منظور از قبل آماده شده با id زیر استفاده کنید</div>
 
 `tapsell_content_banner_ad_template`
 
-<div dir="rtl">مطابق کد زیر ویو adContainer و id لیاوت تبلیغ رو به تپسل پلاس بدهید تا یک AdHolder بسازید</div>
+<div dir="rtl">مطابق قطعه کد زیر adContainer و شناسه layout تبلیغ را به تپسل پلاس بدهید تا یک AdHolder بسازید</div>
 
 ```java
 import ir.tapsell.plus.AdHolder;
@@ -155,7 +155,7 @@ AdHolder adHolder = TapsellPlus.createAdHolder(
       context, adContainer, R.layout.tapsell_content_banner_ad_template);
 ```
 
-<div dir="rtl">مطابق این کد درخواست تبلیغ بدهید</div>
+<div dir="rtl">و مطابق این قطعه کد درخواست تبلیغ بدهید</div>
 
 ```java
 import ir.tapsell.plus.AdCallback;
@@ -176,7 +176,7 @@ import ir.tapsell.plus.TapsellPlus;
     }
 ```
 
-<div dir="rtl">بعد از اجرای متد response تبلیغ آماده نمایش است و میتوانید مطابق روش زیر نمایش دهید</div>
+<div dir="rtl">بعد از اجرای متد response تبلیغ آماده نمایش است و می‌توانید مطابق روش زیر نمایش دهید</div>
 
 ```java
 private void showAd() {
@@ -186,9 +186,9 @@ private void showAd() {
 
 ## <div dir="rtl">آموزش تبلیغات بنر استاندارد</div>
 
-<div dir="rtl">ابتدا از پنل یک تبلیغگاه (zone) بنر استاندارد بسازید و zoneId رو زمان درخواست استفاده کنید</div>
+<div dir="rtl">ابتدا از پنل یک تبلیغگاه (zone) بنر استاندارد بسازید و zoneId را زمان درخواست استفاده کنید</div>
 
-<div dir="rtl">در صفحه‌ای که میخواید تبلیغ نمایش داده شود یک viewGrop اضافه کنید</div>
+<div dir="rtl">در صفحه‌ای که می‌خواهید تبلیغ نمایش داده شود یک viewGrop اضافه کنید</div>
 
 ```xml
 <RelativeLayout
@@ -199,7 +199,7 @@ private void showAd() {
     android:gravity="center" />
 ```
 
-<div dir="rtl">مطابق کد زیر zoneId و view‌ای که معرفی کردید رو به تپسل‌پلاس بدهید</div>
+<div dir="rtl">مطابق کد زیر zoneId و view‌ای که معرفی کردید را به تپسل‌پلاس بدهید</div>
 
 ```java
 ViewGroup banner = findViewById(R.id.standardBanner);
