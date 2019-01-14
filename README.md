@@ -2,6 +2,8 @@
 
 ## <div dir="rtl">آموزش راه اندازی کتاب‌خانه TapsellPlus</div>
 
+#### <div dir="rtl">برای استفاده از این کتابخانه باید به [androidx](https://developer.android.com/jetpack/androidx/) مهاجرت کنید.</div>
+
 ### <div dir="rtl">اضافه کردن کتابخانه به پروژه</div>
 
 
