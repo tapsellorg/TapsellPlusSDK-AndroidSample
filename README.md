@@ -27,7 +27,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.0.1'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.0.2'
 }
 ```
 
@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
 <div dir="rtl">مطابق کد زیر درخواست تبلیغ دهید</div>
 
 ```java
-import ir.tapsell.plus.AdCallback;
+import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.TapsellPlus;
     .......
     private void requestAd() {
-        TapsellPlus.requestRewardedVideo(context, ZONE_ID_REWARDED_VIDEO, new AdCallback() {
+        TapsellPlus.requestRewardedVideo(context, ZONE_ID_REWARDED_VIDEO, new AdRequestCallback() {
             @Override
             public void response() {
                 //ad is ready to show
@@ -160,11 +160,11 @@ AdHolder adHolder = TapsellPlus.createAdHolder(
 <div dir="rtl">و مطابق این قطعه کد درخواست تبلیغ بدهید</div>
 
 ```java
-import ir.tapsell.plus.AdCallback;
+import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.TapsellPlus;
   .......
   private void requestAd() {
-        TapsellPlus.requestNativeBanner(context, ZONE_ID_NATIVE_BANNER, new AdCallback() {
+        TapsellPlus.requestNativeBanner(context, ZONE_ID_NATIVE_BANNER, new AdRequestCallback() {
             @Override
             public void response() {
                 //ad is ready to show
