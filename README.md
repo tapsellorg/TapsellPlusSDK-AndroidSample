@@ -2,8 +2,6 @@
 
 ## <div dir="rtl">آموزش راه اندازی کتاب‌خانه TapsellPlus</div>
 
-#### <div dir="rtl">برای استفاده از این کتابخانه باید به [androidx](https://developer.android.com/jetpack/androidx/) مهاجرت کنید.</div>
-
 ### <div dir="rtl">اضافه کردن کتابخانه به پروژه</div>
 
 
@@ -27,7 +25,16 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.0.2'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.1.0'
+}
+```
+
+<div dir="rtl">همچنین در قسمت android این قسمت وجود ندارد اضافه‌اش کنید</div>
+
+```gradle
+compileOptions {
+  sourceCompatibility JavaVersion.VERSION_1_8
+  targetCompatibility JavaVersion.VERSION_1_8
 }
 ```
 
@@ -67,7 +74,7 @@ import ir.tapsell.plus.TapsellPlus;
             }
 
             @Override
-            public void error(@NonNull String message) {
+            public void error(String message) {
             }
 
         });
@@ -104,9 +111,17 @@ import ir.tapsell.plus.AdShowListener;
             public void onRewarded() {
                 //reward
             }
+
+            @Override
+            public void onError(String message) {
+                //error
+            }
         });
     }
 ```
+
+## <div dir="rtl">آموزش تبلیغات آنی</div>
+مطابق تبلیغات جایزه‌ای پیش برید فقط زمان درخواست تبلیغ از متد TapsellPlus.requestInterstitial استفاده کنید
 
 ## <div dir="rtl">آموزش تبلیغات بنر همسان</div>
 
@@ -171,7 +186,7 @@ import ir.tapsell.plus.TapsellPlus;
             }
 
             @Override
-            public void error(@NonNull String message) {
+            public void error(String message) {
             }
 
         });
@@ -204,11 +219,20 @@ private void showAd() {
 <div dir="rtl">مطابق کد زیر zoneId و view‌ای که معرفی کردید را به تپسل‌پلاس بدهید</div>
 
 ```java
-ViewGroup banner = findViewById(R.id.standardBanner);
+ViewGroup bannerContainer = findViewById(R.id.standardBanner);
 
 TapsellPlus.showBannerAd(
         context, 
-        banner,
+        bannerContainer,
         ZONE_ID_STANDARD_BANNER,
-        TapsellPlusBannerType.BANNER_320x50);
+        TapsellPlusBannerType.BANNER_320x50,
+        new AdRequestCallback() {
+            @Override
+            public void response() {
+            }
+
+            @Override
+            public void error(String message) {
+            }
+});
 ```
