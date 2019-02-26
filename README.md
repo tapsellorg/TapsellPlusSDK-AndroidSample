@@ -25,7 +25,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.1.0'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.1.1'
 }
 ```
 

@@ -33,7 +33,8 @@ public class InterstitialActivity extends AppCompatActivity {
 
     private void requestAd() {
         TapsellPlus.requestInterstitial(
-                this, BuildConfig.TAPSELL_INTERSTITIAL, new AdRequestCallback() {
+                this, BuildConfig.TAPSELL_INTERSTITIAL,
+                new AdRequestCallback() {
                     @Override
                     public void response() {
                         if (isDestroyed())
@@ -54,27 +55,29 @@ public class InterstitialActivity extends AppCompatActivity {
     }
 
     private void showAd() {
-        TapsellPlus.showAd(this, BuildConfig.TAPSELL_INTERSTITIAL, new AdShowListener() {
-            @Override
-            public void onOpened() {
+        TapsellPlus.showAd(this, BuildConfig.TAPSELL_INTERSTITIAL,
+                new AdShowListener() {
+                    @Override
+                    public void onOpened() {
 
-            }
+                    }
 
-            @Override
-            public void onClosed() {
+                    @Override
+                    public void onClosed() {
 
-            }
+                    }
 
-            @Override
-            public void onRewarded() {
+                    @Override
+                    public void onRewarded() {
 
-            }
+                    }
 
-            @Override
-            public void onError(String a) {
+                    @Override
+                    public void onError(String a) {
 
-            }
-        });
+                    }
+                });
+
         btShow.setEnabled(false);
     }
 }

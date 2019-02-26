@@ -35,7 +35,8 @@ public class RewardedVideoActivity extends AppCompatActivity {
 
     private void requestAd() {
         TapsellPlus.requestRewardedVideo(
-                this, BuildConfig.TAPSELL_REWARDED_VIDEO, new AdRequestCallback() {
+                this, BuildConfig.TAPSELL_REWARDED_VIDEO,
+                new AdRequestCallback() {
                     @Override
                     public void response() {
                         if (isDestroyed())
@@ -56,31 +57,32 @@ public class RewardedVideoActivity extends AppCompatActivity {
     }
 
     private void showAd() {
-        TapsellPlus.showAd(this, BuildConfig.TAPSELL_REWARDED_VIDEO, new AdShowListener() {
-            @Override
-            public void onOpened() {
-                Log.d(TAG, "Ad Opened");
+        TapsellPlus.showAd(this, BuildConfig.TAPSELL_REWARDED_VIDEO,
+                new AdShowListener() {
+                    @Override
+                    public void onOpened() {
+                        Log.d(TAG, "Ad Opened");
 
-            }
+                    }
 
-            @Override
-            public void onClosed() {
-                Log.d(TAG, "Ad Closed");
+                    @Override
+                    public void onClosed() {
+                        Log.d(TAG, "Ad Closed");
 
-            }
+                    }
 
-            @Override
-            public void onRewarded() {
-                Log.d(TAG, "Reward");
+                    @Override
+                    public void onRewarded() {
+                        Log.d(TAG, "Reward");
 
-            }
+                    }
 
-            @Override
-            public void onError(String s) {
-                Log.e(TAG, "Reward");
+                    @Override
+                    public void onError(String s) {
+                        Log.e(TAG, "Reward");
 
-            }
-        });
+                    }
+                });
         btShow.setEnabled(false);
     }
 }
