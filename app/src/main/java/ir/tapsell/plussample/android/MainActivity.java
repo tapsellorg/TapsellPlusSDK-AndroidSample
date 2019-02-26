@@ -6,11 +6,12 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import ir.tapsell.plus.TapsellPlus;
-import ir.tapsell.plus.TapsellPlusBannerType;
 
 public class MainActivity extends AppCompatActivity {
     private View btRewardedVideo;
+    private View btInterstitial;
     private View btNativeBanner;
+    private View btStandardBanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,19 +22,18 @@ public class MainActivity extends AppCompatActivity {
         TapsellPlus.initialize(this, BuildConfig.TAPSELL_KEY);
 
         init();
-
-        TapsellPlus.showBannerAd(
-                this, findViewById(R.id.standardBanner),
-                BuildConfig.TAPSELL_STANDARD_BANNER,
-                TapsellPlusBannerType.BANNER_320x50);
     }
 
     private void init() {
         btRewardedVideo = findViewById(R.id.btRewardedVideo);
+        btInterstitial = findViewById(R.id.btInterstitial);
         btNativeBanner = findViewById(R.id.btNativeBanner);
+        btStandardBanner = findViewById(R.id.btStandardBanner);
 
         btRewardedVideo.setOnClickListener(v -> startActivity(RewardedVideoActivity.class));
+        btInterstitial.setOnClickListener(v -> startActivity(InterstitialActivity.class));
         btNativeBanner.setOnClickListener(v -> startActivity(NativeBannerActivity.class));
+        btStandardBanner.setOnClickListener(v -> startActivity(StandardBannerActivity.class));
     }
 
     private void startActivity(Class cla) {

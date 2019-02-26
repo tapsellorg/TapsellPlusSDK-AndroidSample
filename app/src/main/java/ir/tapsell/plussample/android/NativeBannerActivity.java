@@ -36,27 +36,29 @@ public class NativeBannerActivity extends AppCompatActivity {
 
     private void requestAd() {
         TapsellPlus.requestNativeBanner(
-                this, BuildConfig.TAPSELL_NATIVE_BANNER, new AdRequestCallback() {
-            @Override
-            public void response() {
-                if (isDestroyed())
-                    return;
+                this,
+                BuildConfig.TAPSELL_NATIVE_BANNER,
+                new AdRequestCallback() {
+                    @Override
+                    public void response() {
+                        if (isDestroyed())
+                            return;
 
-                Log.d(TAG, "Ad Response");
-                showAd();
-            }
+                        Log.d(TAG, "Ad Response");
+                        showAd();
+                    }
 
-            @Override
-            public void error(@NonNull String message) {
-                if (isDestroyed())
-                    return;
+                    @Override
+                    public void error(@NonNull String message) {
+                        if (isDestroyed())
+                            return;
 
-                Log.e(TAG, "error: " + message);
-            }
-        });
+                        Log.e(TAG, "error: " + message);
+                    }
+                });
     }
 
     private void showAd() {
-        TapsellPlus.showAd(this, adHolder,  BuildConfig.TAPSELL_NATIVE_BANNER);
+        TapsellPlus.showAd(this, adHolder, BuildConfig.TAPSELL_NATIVE_BANNER);
     }
 }

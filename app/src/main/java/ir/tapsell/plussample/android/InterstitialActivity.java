@@ -10,23 +10,21 @@ import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.TapsellPlus;
 
-public class RewardedVideoActivity extends AppCompatActivity {
-
-    private static final String TAG = "RewardActivity";
+public class InterstitialActivity extends AppCompatActivity {
 
     private View btShow;
-    private View btRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_rewarded_video);
+
         init();
     }
 
     private void init() {
-        btRequest = findViewById(R.id.btRequest);
+        View btRequest = findViewById(R.id.btRequest);
         btShow = findViewById(R.id.btShow);
         btShow.setEnabled(false);
         btRequest.setOnClickListener(v -> requestAd());
@@ -34,15 +32,14 @@ public class RewardedVideoActivity extends AppCompatActivity {
     }
 
     private void requestAd() {
-        TapsellPlus.requestRewardedVideo(
-                this, BuildConfig.TAPSELL_REWARDED_VIDEO, new AdRequestCallback() {
+        TapsellPlus.requestInterstitial(
+                this, BuildConfig.TAPSELL_INTERSTITIAL, new AdRequestCallback() {
                     @Override
                     public void response() {
                         if (isDestroyed())
                             return;
 
                         btShow.setEnabled(true);
-                        Log.d(TAG, "Ad Response");
                     }
 
                     @Override
@@ -52,32 +49,29 @@ public class RewardedVideoActivity extends AppCompatActivity {
 
                         Log.e("error", message);
                     }
+
                 });
     }
 
     private void showAd() {
-        TapsellPlus.showAd(this, BuildConfig.TAPSELL_REWARDED_VIDEO, new AdShowListener() {
+        TapsellPlus.showAd(this, BuildConfig.TAPSELL_INTERSTITIAL, new AdShowListener() {
             @Override
             public void onOpened() {
-                Log.d(TAG, "Ad Opened");
 
             }
 
             @Override
             public void onClosed() {
-                Log.d(TAG, "Ad Closed");
 
             }
 
             @Override
             public void onRewarded() {
-                Log.d(TAG, "Reward");
 
             }
 
             @Override
-            public void onError(String s) {
-                Log.e(TAG, "Reward");
+            public void onError(String a) {
 
             }
         });

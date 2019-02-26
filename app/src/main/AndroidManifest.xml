@@ -25,8 +25,16 @@
             android:label="@string/rewarded_video" />
 
         <activity
+            android:name=".InterstitialActivity"
+            android:label="@string/interstitial" />
+
+        <activity
             android:name=".NativeBannerActivity"
             android:label="@string/native_banner" />
+
+        <activity
+            android:name=".StandardBannerActivity"
+            android:label="@string/standard_banner" />
 
     </application>
 
