@@ -121,7 +121,7 @@ import ir.tapsell.plus.AdShowListener;
 ```
 
 ## <div dir="rtl">آموزش تبلیغات آنی</div>
-مطابق تبلیغات جایزه‌ای پیش برید فقط زمان درخواست تبلیغ از متد TapsellPlus.requestInterstitial استفاده کنید
+<div dir="rtl">مطابق تبلیغات جایزه‌ای پیش برید فقط زمان درخواست تبلیغ از متد TapsellPlus.requestInterstitial استفاده کنید</div>
 
 ## <div dir="rtl">آموزش تبلیغات بنر همسان</div>
 
