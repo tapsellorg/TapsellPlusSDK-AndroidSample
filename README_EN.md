@@ -25,7 +25,7 @@ Secondly, add the following dependency to the dependencies section of your app-l
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.2.2'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:0.2.3'
 }
 ```
 
