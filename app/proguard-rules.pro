@@ -150,6 +150,8 @@
 -keep enum * implements ir.tapsell.sdk.NoProguard { *; }
 -keepnames class * implements ir.tapsell.sdk.NoNameProguard { *; }
 -keepnames class * extends android.app.Activity
+-keep class ir.tapsell.plus.model.** { *; }
+-keep class ir.tapsell.sdk.models.** { *; }
 
 -keep class ir.tapsell.sdk.nativeads.TapsellNativeVideoAdLoader$Builder {*;}
 -keep class ir.tapsell.sdk.nativeads.TapsellNativeBannerAdLoader$Builder {*;}
