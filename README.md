@@ -1,4 +1,5 @@
 
+[ ![Download](https://api.bintray.com/packages/tapsellorg/maven/tapsell-plus-sdk-android/images/download.svg) ](https://bintray.com/tapsellorg/maven/tapsell-plus-sdk-android/_latestVersion)
 
 ## <div dir="rtl">آموزش راه اندازی کتاب‌خانه TapsellPlus</div>
 
@@ -26,7 +27,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.0'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.1'
 }
 ```
 
