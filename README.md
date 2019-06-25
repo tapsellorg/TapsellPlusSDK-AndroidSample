@@ -3,10 +3,16 @@
 
 ## <div dir="rtl">آموزش راه اندازی کتاب‌خانه TapsellPlus</div>
 
+
+### <div dir="rtl">توجه: از نسخه 1.0.3 به بعد پشتیبانی از تبلیغات همسان AdMob اضافه شده و این نسخه در تبلیغات همسان با نسخه‌های قبلی سازگار نیست. در صورتی که از تبلیغات همسان استفاده میکنید مطابق آموزش پیش برید.</div>
+
+
+### <div dir="rtl">توجه: از نسخه 1.0.0 به بعد سایر ادنتورک‌ها که علاقه مند هستید اضافه کنید باید مطابق روش گفته شده اضافه شوند و این ادنتورک‌ها به صورت خودکار اضافه نمیشوند.</div>
+
 ### <div dir="rtl">اضافه کردن کتابخانه به پروژه</div>
 
 
-<div dir="rtl">ابتدا کتابخانه TapsellPlus را مطابق روش زیر به پروژه اضافه کنید سپس هر adNetworke که تپسل پلاس پشتیبانی میکند و مایل هستید را مطابق توضیحات به پروژه اضافه کنید. در انتها با روش‌های تست مطمئن شوید که adNetwork مورد نظر به درستی کار میکند.<br /><br /></div>  
+<div dir="rtl">ابتدا کتابخانه TapsellPlus را مطابق روش زیر به پروژه اضافه کنید سپس هر adNetwork که تپسل پلاس پشتیبانی میکند و مایل هستید را مطابق توضیحات به پروژه اضافه کنید. در انتها با روش‌های تست مطمئن شوید که adNetwork مورد نظر به درستی کار میکند.<br /><br /></div>  
   
 <div dir="rtl">ریپازیتوری تپسل را به فایل build.gradle پروژه اضافه کنید.</div>
 
@@ -27,7 +33,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.2'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.3'
 }
 ```
 
@@ -159,7 +165,7 @@ private void showAd() {
 
 <div dir="rtl">ابتدا از پنل یک تبلیغگاه (zone) بنر همسان بسازید و zoneId را زمان درخواست و نمایش تبلیغ استفاده کنید.</div>
 
-<div dir="rtl">در صفحه‌ای که قصد دارید بنر همسان نمایش بدهید باید یک  view اضافه کنید.</div>
+<div dir="rtl">در صفحه‌ای که قصد دارید بنر همسان نمایش بدهید باید یک  view  به عنوان فضایی که قصد دارید تبلیغات در آن نمایش داده شود (adContainer) اضافه کنید.</div>
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -177,7 +183,7 @@ private void showAd() {
 </FrameLayout>
 ```
 
-<div dir="rtl">باید یک layout دلخواه مطابق شکلی که قصد دارید تبلیغ نمایش داده شود، بسازید و id بخش‌های مختلف مطابق با جدول زیر باشد:</div>
+<div dir="rtl">باید یک layout دلخواه مطابق شکلی که قصد دارید تبلیغ نمایش داده شود بسازید که rootView از نوع com.google.android.gms.ads.formats.UnifiedNativeAdView  باشد و id بخش‌های مختلف مطابق با جدول زیر باشد:</div>
 
 |              |              id              |
 |:------------:|:----------------------------:|
@@ -186,11 +192,13 @@ private void showAd() {
 | ad indicator |  tapsell_nativead_sponsored  |
 |  description | tapsell_nativead_description |
 |    banner    |    tapsell_nativead_banner   |
+|  media view  |tapsell_nativead_banner_admob |
 |    button    |     tapsell_nativead_cta     |
 
-<div dir="rtl">همچنین می‌توانید از view‌ای که برای این منظور از قبل آماده شده با id زیر استفاده کنید.</div>
+<div dir="rtl">باید ۲ ویو را برای نمایش عکس تبلیغات اختصاص بدهید. یکی از نوع ir.tapsell.sdk.nativeads.views.RatioImageView برای تپسل و دیگری از نوع com.google.android.gms.ads.formats.MediaView برای AdMob این دو میتواند دقیقا روی هم قرار بگیرد. تپسل با توجه به تبلیغ آماده نمایش ویو مورد نظر را نمایش میدهد.</div>
+<div dir="rtl">همچنین می‌توانید از view‌ای که برای این منظور از قبل آماده شده با id زیر استفاده کنید یا ازش به عنوان راهنمایی در ساخت ویو کمک بگیرید.</div>
 
-`tapsell_content_banner_ad_template`
+`native_banner`
 
 <div dir="rtl">مطابق قطعه کد زیر adContainer و شناسه layout تبلیغ را به تپسل پلاس بدهید تا یک AdHolder بسازید.</div>
 
@@ -201,7 +209,7 @@ import ir.tapsell.plus.TapsellPlus;
 ViewGroup adContainer = findViewById(R.id.adContainer);
 ...
 AdHolder adHolder = TapsellPlus.createAdHolder(
-      context, adContainer, R.layout.tapsell_content_banner_ad_template);
+      context, adContainer, R.layout.native_banner);
 ```
 
 <div dir="rtl">و مطابق این قطعه کد درخواست تبلیغ بدهید.</div>
@@ -299,6 +307,8 @@ TapsellPlus.initialize(this, "alsoatsrtrotpqacegkehkaiieckldhrgsbspqtgqnbrrfccrt
 |    Admob    |    Rewarded Video   |5cfaa8aee8d17f0001ffb28f|
 |    Admob    |     Interstitial     |5cfaa9b0e8d17f0001ffb293|
 |    Admob    |     Standard     |5cfaaa4ae8d17f0001ffb295|
+|    Admob    |     Native     |5d123c9968287d00019e1a94|
+|    Admob    |     Native Video     |5d123d6f68287d00019e1a95|
 |    Unity Ads    |     Rewarded Video     |5cfaa8eae8d17f0001ffb291|
 |    Chartboost    |     Rewarded Video     |5cfaa8cee8d17f0001ffb290|
 |    Facebook    |     Rewarded Video     |5cfaa838aede570001d55538|
