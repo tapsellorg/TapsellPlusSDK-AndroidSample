@@ -33,7 +33,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.3'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.5'
 }
 ```
 
@@ -56,9 +56,6 @@ dependencies {
     .......
     //for adMob
     implementation 'com.google.android.gms:play-services-ads:17.2.1'
-    implementation 'com.google.android.gms:play-services-basement:16.2.0'
-    implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
 
     //for unityAds
     implementation 'com.unity3d.ads:unity-ads:3.0.0'
