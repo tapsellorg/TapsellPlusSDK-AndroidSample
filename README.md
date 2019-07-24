@@ -180,17 +180,22 @@ private void showAd() {
 </FrameLayout>
 ```
 
-<div dir="rtl">باید یک layout دلخواه مطابق شکلی که قصد دارید تبلیغ نمایش داده شود بسازید که rootView از نوع com.google.android.gms.ads.formats.UnifiedNativeAdView  باشد و id بخش‌های مختلف مطابق با جدول زیر باشد:</div>
+<div dir="rtl">باید یک layout دلخواه مطابق شکلی که قصد دارید تبلیغ نمایش داده شود بسازید که rootView از نوع com.google.android.gms.ads.formats.UnifiedNativeAdView  باشد و id و نوع بخش‌های مختلف مطابق با جدول زیر باشد:</div>
 
-|              |              id              |
-|:------------:|:----------------------------:|
-|     logo     |     tapsell_nativead_logo    |
-|     title    |    tapsell_nativead_title    |
-| ad indicator |  tapsell_nativead_sponsored  |
-|  description | tapsell_nativead_description |
-|    banner    |    tapsell_nativead_banner   |
-|  media view  |tapsell_nativead_banner_admob |
-|    button    |     tapsell_nativead_cta     |
+|       view       |              id              | type  |
+|:------------:|:----------------------------:|:-:|
+|     logo     |     tapsell_nativead_logo    | ImageView  |
+|     title    |    tapsell_nativead_title    | TextView  |
+| ad indicator |  tapsell_nativead_sponsored  | View  |
+|  description | tapsell_nativead_description | TextView  |
+|    banner    |    tapsell_nativead_banner   | ImageView  |
+|  media view  |tapsell_nativead_banner_admob | com.google.android.gms.ads.formats.MediaView  |
+|    button    |     tapsell_nativead_cta     | TextView  |
+|    clickable view    |     tapsell_nativead_cta_view     | View  |
+
+> در صورتی که در طراحی دکمه‌ای برای کلیک کردن وجود ندارد میتوانید از clickable view استفاده کنید
+
+> نوع ویوها میتواند از نوع‌های گفته شده ارث بری کرده باشند
 
 <div dir="rtl">باید ۲ ویو را برای نمایش عکس تبلیغات اختصاص بدهید. یکی از نوع ir.tapsell.sdk.nativeads.views.RatioImageView برای تپسل و دیگری از نوع com.google.android.gms.ads.formats.MediaView برای AdMob این دو میتواند دقیقا روی هم قرار بگیرد. تپسل با توجه به تبلیغ آماده نمایش ویو مورد نظر را نمایش میدهد.</div>
 <div dir="rtl">همچنین می‌توانید از view‌ای که برای این منظور از قبل آماده شده با id زیر استفاده کنید یا ازش به عنوان راهنمایی در ساخت ویو کمک بگیرید.</div>
