@@ -188,7 +188,7 @@ private void showAd() {
 |     title    |    tapsell_nativead_title    | TextView  |
 | ad indicator |  tapsell_nativead_sponsored  | View  |
 |  description | tapsell_nativead_description | TextView  |
-|    banner    |    tapsell_nativead_banner   | ImageView  |
+|    banner    |    tapsell_nativead_banner   | ir.tapsell.sdk.nativeads.views.RatioImageView  |
 |  media view  |tapsell_nativead_banner_admob | com.google.android.gms.ads.formats.MediaView  |
 |    button    |     tapsell_nativead_cta     | TextView  |
 |    clickable view    |     tapsell_nativead_cta_view     | View  |
