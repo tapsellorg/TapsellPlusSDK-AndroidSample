@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.unity3d.ads:unity-ads:3.0.0'
 
     //for chartboost
-    implementation 'ee.traxnet.sdk:chartboost-sdk-android:7.3.1'
+    implementation 'ir.tapsell.sdk:chartboost-sdk-android:7.3.1'
     
     //for facebook
     implementation 'com.facebook.android:audience-network-sdk:5.3.0'
