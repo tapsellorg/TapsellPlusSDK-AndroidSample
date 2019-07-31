@@ -65,7 +65,24 @@ dependencies {
 
     //for facebook
     implementation 'com.facebook.android:audience-network-sdk:5.3.0'
+    implementation 'com.facebook.android:facebook-android-sdk:5.2.0'
+    
+    //for adcolony
+    implementation 'com.adcolony:sdk:3.3.11'
+    
+    //for applovin
+    implementation 'com.applovin:applovin-sdk:9.7.2'
+    
+    //for vungle
+    implementation 'com.vungle:publisher-sdk-android:6.4.11'
     .....
+}
+```
+
+<div dir="rtl">برای adcolony لازم هست ریپازیتوری زیر به build.gradle پروژه اضافه شود.</div>
+```
+maven {
+  url  "https://adcolony.bintray.com/AdColony"
 }
 ```
 
@@ -302,19 +319,26 @@ TapsellPlus.initialize(this, "alsoatsrtrotpqacegkehkaiieckldhrgsbspqtgqnbrrfccrt
 
 |        Ad Network      |              Ad Type              |ZoneId
 |:------------:|:----------------------------:|:----------------------------:|
-|     Tapsell     |     Rewarded Video    | 5cfaa802e8d17f0001ffb28e|
-|     Tapsell    |    Interstitial    |5cfaa942e8d17f0001ffb292|
-| Tapsell |  Native  |5cfaa9deaede570001d5553a|
-|  Tapsell | Standard |5cfaaa30e8d17f0001ffb294|
-|    Admob    |    Rewarded Video   |5cfaa8aee8d17f0001ffb28f|
-|    Admob    |     Interstitial     |5cfaa9b0e8d17f0001ffb293|
-|    Admob    |     Standard     |5cfaaa4ae8d17f0001ffb295|
-|    Admob    |     Native     |5d123c9968287d00019e1a94|
-|    Admob    |     Native Video     |5d123d6f68287d00019e1a95|
-|    Unity Ads    |     Rewarded Video     |5cfaa8eae8d17f0001ffb291|
-|    Chartboost    |     Rewarded Video     |5cfaa8cee8d17f0001ffb290|
-|    Facebook    |     Rewarded Video     |5cfaa838aede570001d55538|
-|    Facebook    |     Interstitial     |5cfaa975aede570001d55539|
+|     Tapsell     |     Rewarded Video    | `5cfaa802e8d17f0001ffb28e`|
+|     Tapsell    |    Interstitial    |`5cfaa942e8d17f0001ffb292`|
+| Tapsell |  Native  |`5cfaa9deaede570001d5553a`|
+|  Tapsell | Standard |`5cfaaa30e8d17f0001ffb294`|
+|    Admob    |    Rewarded Video   |`5cfaa8aee8d17f0001ffb28f`|
+|    Admob    |     Interstitial     |`5cfaa9b0e8d17f0001ffb293`|
+|    Admob    |     Standard     |`5cfaaa4ae8d17f0001ffb295`|
+|    Admob    |     Native     |`5d123c9968287d00019e1a94`|
+|    Admob    |     Native Video     |`5d123d6f68287d00019e1a95`|
+|    Unity Ads    |     Rewarded Video     |`5cfaa8eae8d17f0001ffb291`|
+|    Chartboost    |     Rewarded Video     |`5cfaa8cee8d17f0001ffb290`|
+|    Facebook    |     Rewarded Video     |`5cfaa838aede570001d55538`|
+|    Facebook    |     Interstitial     |`5cfaa975aede570001d55539`|
+|    AdColony    |     Rewarded Video     |`5d3362766de9f600013662d5`|
+|    AdColony    |     Interstitial     |`5d336289e985d50001427acf`|
+|    AppLovin    |     Rewarded Video     |`5d3eb48c3aef7a0001406f84`|
+|    AppLovin    |     Interstitial     |`5d3eb4fa3aef7a0001406f85`|
+|    AppLovin    |     Standard     |`5d3eb5337a9b060001892441`|
+|    Vungle    |     Rewarded Video     |`5d3eb55a7a9b060001892442`|
+|    Vungle    |     Interstitial     |`5d3eb56d3aef7a0001406f86`|
 
 
 
