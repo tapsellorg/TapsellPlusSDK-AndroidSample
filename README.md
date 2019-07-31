@@ -80,6 +80,7 @@ dependencies {
 ```
 
 <div dir="rtl">برای adcolony لازم هست ریپازیتوری زیر به build.gradle پروژه اضافه شود.</div>
+
 ```
 maven {
   url  "https://adcolony.bintray.com/AdColony"
