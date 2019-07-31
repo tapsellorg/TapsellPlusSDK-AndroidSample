@@ -140,7 +140,7 @@
 ##---------------End: proguard configuration for chartboost  ----------
 
 
-##---------------End: proguard configuration for tapsell  ----------
+##---------------Begin: proguard configuration for tapsell  ----------
 -keepclassmembers enum * { *; }
 -keep class **.R$* { *; }
 -keep interface ir.tapsell.sdk.NoProguard
@@ -163,4 +163,26 @@
 -keepclasseswithmembers class * {
     public <init>(android.content.Context, android.util.AttributeSet);
 }
+
+-keep interface ir.tapsell.plus.NoProguard
+-keep interface * extends ir.tapsell.plus.NoProguard { *; }
+-keep class * implements ir.tapsell.plus.NoProguard { *; }
+
 ##---------------End: proguard configuration for tapsell  ----------
+
+##---------------Begin: proguard configuration for Vungle  ----------
+
+# Vungle
+-keep class com.vungle.warren.** { *; }
+-keep class com.vungle.warren.downloader.DownloadRequest
+-dontwarn com.vungle.warren.error.VungleError$ErrorCode
+-dontwarn com.vungle.warren.downloader.DownloadRequest$Status
+-keepclassmembers enum com.vungle.warren.** { *; }
+
+# Moat SDK
+-keep class com.moat.** { *; }
+-dontwarn com.moat.**
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-keepattributes *Annotation*
+
+##---------------End: proguard configuration for Vungle  ----------
