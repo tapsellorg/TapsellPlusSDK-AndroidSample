@@ -81,7 +81,7 @@ dependencies {
 
 <div dir="rtl">برای adcolony لازم هست ریپازیتوری زیر به build.gradle پروژه اضافه شود.</div>
 
-```
+```gradle
 maven {
   url  "https://adcolony.bintray.com/AdColony"
 }
@@ -202,14 +202,14 @@ private void showAd() {
 
 |       view       |              id              | type  |
 |:------------:|:----------------------------:|:-:|
-|     logo     |     tapsell_nativead_logo    | ImageView  |
-|     title    |    tapsell_nativead_title    | TextView  |
-| ad indicator |  tapsell_nativead_sponsored  | View  |
-|  description | tapsell_nativead_description | TextView  |
-|    banner    |    tapsell_nativead_banner   | ir.tapsell.sdk.nativeads.views.RatioImageView  |
-|  media view  |tapsell_nativead_banner_admob | com.google.android.gms.ads.formats.MediaView  |
-|    button    |     tapsell_nativead_cta     | TextView  |
-|    clickable view    |     tapsell_nativead_cta_view     | View  |
+|     logo     |     `tapsell_nativead_logo`    | `ImageView`  |
+|     title    |    `tapsell_nativead_title`    | `TextView`  |
+| ad indicator |  `tapsell_nativead_sponsored`  | `View`  |
+|  description | `tapsell_nativead_description` | `TextView`  |
+|    banner    |    `tapsell_nativead_banner`   | `ir.tapsell.sdk.nativeads.views.RatioImageView`  |
+|  media view  |`tapsell_nativead_banner_admob` | `com.google.android.gms.ads.formats.MediaView`  |
+|    button    |     `tapsell_nativead_cta`     | `TextView`  |
+|    clickable view    |     `tapsell_nativead_cta_view`     | `View`  |
 
 <div dir="rtl">در صورتی که در طراحی دکمه‌ای برای کلیک کردن وجود ندارد میتوانید از clickable view استفاده کنید
 </div>
