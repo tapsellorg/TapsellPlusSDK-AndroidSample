@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:text="@string/standard_banner" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btNativeBannerInList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/native_banner_in_list" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
