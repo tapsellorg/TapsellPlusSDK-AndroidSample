@@ -186,3 +186,13 @@
 -keepattributes *Annotation*
 
 ##---------------End: proguard configuration for Vungle  ----------
+
+##---------------Begin: proguard configuration for AppLovin  ----------
+
+-dontwarn com.applovin.**
+-libraryjars libs/applovin-sdk-6.3.0.jar
+-keep class com.applovin.** { *; }
+-keep class com.google.android.gms.ads.identifier.** { *; }
+
+##---------------End: proguard configuration for AppLovin  ----------
+
