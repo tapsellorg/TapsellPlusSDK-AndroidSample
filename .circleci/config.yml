@@ -1,0 +1,22 @@
+version: 2
+defaults: &defaults
+  docker:
+    - image: tapsellorg/android-sdk:v3.1.0
+
+jobs:
+
+  build:
+    <<: *defaults
+
+    steps:
+      - checkout
+      - run:
+            name: Build APK
+            command: ./gradlew assembleDebug
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - build
