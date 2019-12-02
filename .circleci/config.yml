@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
             name: Build APK
-            command: ./gradlew assembleDebug
+            command: gradle assembleDebug
 
 workflows:
   version: 2
