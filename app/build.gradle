@@ -40,7 +40,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.11'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.12'
 
     //for adMob
     implementation 'com.google.android.gms:play-services-ads:18.1.1'
