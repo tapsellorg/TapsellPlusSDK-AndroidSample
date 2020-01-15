@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:5.2.0'
 
     //for vungle
-    implementation 'com.vungle:publisher-sdk-android:6.4.11'
+//    implementation 'com.vungle:publisher-sdk-android:6.4.11'
 
     //for applovin
     implementation 'com.applovin:applovin-sdk:9.7.2'
