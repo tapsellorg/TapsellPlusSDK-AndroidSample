@@ -85,6 +85,9 @@ dependencies {
 maven {
   url  "https://adcolony.bintray.com/AdColony"
 }
+maven {
+  url "https://chartboostmobile.bintray.com/Chartboost"
+}
 ```
 
 ### <div dir="rtl">تنظیمات پروگوارد</div>
