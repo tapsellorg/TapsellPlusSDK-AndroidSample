@@ -33,7 +33,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.12'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.1.3'
 }
 ```
 
@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.unity3d.ads:unity-ads:3.0.0'
 
     //for chartboost
-    implementation 'ir.tapsell.sdk:chartboost-sdk-android:7.3.1'
+    implementation 'com.chartboost:chartboost-sdk:8.1.0'
 
     //for facebook
     implementation 'com.facebook.android:audience-network-sdk:5.3.0'
@@ -79,7 +79,7 @@ dependencies {
 }
 ```
 
-<div dir="rtl">برای adcolony لازم هست ریپازیتوری زیر به build.gradle پروژه اضافه شود.</div>
+<div dir="rtl">برای adcolony و chartboost لازم هست ریپازیتوری‌های زیر به build.gradle پروژه اضافه شوند.</div>
 
 ```gradle
 maven {
@@ -328,7 +328,6 @@ TapsellPlus.initialize(this, "alsoatsrtrotpqacegkehkaiieckldhrgsbspqtgqnbrrfccrt
 |    Admob    |     Interstitial     |`5cfaa9b0e8d17f0001ffb293`|
 |    Admob    |     Standard     |`5cfaaa4ae8d17f0001ffb295`|
 |    Admob    |     Native     |`5d123c9968287d00019e1a94`|
-|    Admob    |     Native Video     |`5d123d6f68287d00019e1a95`|
 |    Unity Ads    |     Rewarded Video     |`5cfaa8eae8d17f0001ffb291`|
 |    Chartboost    |     Rewarded Video     |`5cfaa8cee8d17f0001ffb290`|
 |    Facebook    |     Rewarded Video     |`5cfaa838aede570001d55538`|
