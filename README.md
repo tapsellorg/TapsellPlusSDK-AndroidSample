@@ -62,19 +62,12 @@ dependencies {
 
     //for chartboost
     implementation 'com.chartboost:chartboost-sdk:8.1.0'
-
-    //for facebook
-    implementation 'com.facebook.android:audience-network-sdk:5.3.0'
-    implementation 'com.facebook.android:facebook-android-sdk:5.2.0'
     
     //for adcolony
     implementation 'com.adcolony:sdk:3.3.11'
     
     //for applovin
     implementation 'com.applovin:applovin-sdk:9.7.2'
-    
-    //for vungle
-    implementation 'com.vungle:publisher-sdk-android:6.4.11'
     .....
 }
 ```
@@ -308,7 +301,6 @@ TapsellPlus.showBannerAd(
 <div dir="rtl">* توجه داشته باشید در حالت تست باید از appId تست استفاده کنید.</div>
 <div dir="rtl">* هنگام تست باید از ip خارج ایران (فیلتر شکن) استفاده کنید.</div>
 <div dir="rtl">* برای عملکرد صحیح حالت تست باید یکبار برنامه باز و بسته شود. همچنین در دومین درخواست، تبلیغ  adNetwork مورد نظر نمایش داده میشود.</div>
-<div dir="rtl">* برای تست facebook باید hash دستگاهی که بر روی آن تست انجام میشود طبق روش گفته شده به sdk داده شود.</div>
 <div dir="rtl">* تست را در حالت build release هم انجام دهید.</div>
 
 <div dir="rtl"><br /></div>
@@ -333,28 +325,10 @@ TapsellPlus.initialize(this, "alsoatsrtrotpqacegkehkaiieckldhrgsbspqtgqnbrrfccrt
 |    Admob    |     Native     |`5d123c9968287d00019e1a94`|
 |    Unity Ads    |     Rewarded Video     |`5cfaa8eae8d17f0001ffb291`|
 |    Chartboost    |     Rewarded Video     |`5cfaa8cee8d17f0001ffb290`|
-|    Facebook    |     Rewarded Video     |`5cfaa838aede570001d55538`|
-|    Facebook    |     Interstitial     |`5cfaa975aede570001d55539`|
 |    AdColony    |     Rewarded Video     |`5d3362766de9f600013662d5`|
 |    AdColony    |     Interstitial     |`5d336289e985d50001427acf`|
 |    AppLovin    |     Rewarded Video     |`5d3eb48c3aef7a0001406f84`|
 |    AppLovin    |     Interstitial     |`5d3eb4fa3aef7a0001406f85`|
 |    AppLovin    |     Standard     |`5d3eb5337a9b060001892441`|
-|    Vungle    |     Rewarded Video     |`5d3eb55a7a9b060001892442`|
-|    Vungle    |     Interstitial     |`5d3eb56d3aef7a0001406f86`|
 
-
-
-<div dir="rtl">زمانی که از facebook استفاده میکنید متنی مشابه زیر در logcat پرینت میشود.</div>
-
-```
-When testing your app with Facebook's ad units you must specify the device hashed ID to ensure the delivery of test ads, add the following code before loading an ad: AdSettings.addTestDevice("YOUR_DEVICE_HASH");
-```
-
-
-<div dir="rtl">برای دیدن تبلیغات تستی فیسبوک مقدار hash دستگاه خود را از طریق متد زیر به کتابخانه تپسل بدهید.</div>
-
-```java
-TapsellPlus.addFacebookTestDevice("YOUR_DEVICE_HASH");
-```
 
