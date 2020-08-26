@@ -25,7 +25,7 @@ Secondly, add the following dependency to the dependencies section of your app-l
 
 ```gradle
 dependencies {
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.0.7'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.1.3'
 }
 ```
 
@@ -51,29 +51,25 @@ dependencies {
     implementation 'com.unity3d.ads:unity-ads:3.0.0'
 
     //for chartboost
-    implementation 'ir.tapsell.sdk:chartboost-sdk-android:7.3.1'
-    
-    //for facebook
-    implementation 'com.facebook.android:audience-network-sdk:5.3.0'
-    implementation 'com.facebook.android:facebook-android-sdk:5.2.0'
+    implementation 'com.chartboost:chartboost-sdk:8.1.0'
     
     //for adcolony
     implementation 'com.adcolony:sdk:3.3.11'
     
     //for applovin
     implementation 'com.applovin:applovin-sdk:9.7.2'
-    
-    //for vungle
-    implementation 'com.vungle:publisher-sdk-android:6.4.11'
     .....
 }
 ```
 
-For AdColony, add the following dependency to the dependencies section of your app-level `build.gradle` file:
+For AdColony and Chartboost, add these following dependencies to the dependencies section of your project-level `build.gradle` file:
 
 ```gradle
 maven {
   url  "https://adcolony.bintray.com/AdColony"
+}
+maven {
+  url "https://chartboostmobile.bintray.com/Chartboost"
 }
 ```
 
@@ -293,7 +289,6 @@ TapsellPlus.showBannerAd(
 To ensure the correctness work of each adNetwrok, Use zoneId for each one. Each zoneId is related to an AdNetwork and an adType, and Test ad is displayed.
 * Note: in test mode should use test appId.
 * The application must be opened and closed once, for the correct operation of the test mode. Also, in the second request, the AdNetwork ad will be displayed.
-* For facebook testing, the hash of the device on which test is performed should be given according to the method described in sdk.
 * Run the test in release mode.
 
 Use this appId to test.
@@ -313,7 +308,6 @@ Use the below zoneId to request and display ads for each AdNetwork and any adver
 |    Admob    |     Interstitial     |`5cfaa9b0e8d17f0001ffb293`|
 |    Admob    |     Standard     |`5cfaaa4ae8d17f0001ffb295`|
 |    Admob    |     Native     |`5d123c9968287d00019e1a94`|
-|    Admob    |     Native Video     |`5d123d6f68287d00019e1a95`|
 |    Unity Ads    |     Rewarded Video     |`5cfaa8eae8d17f0001ffb291`|
 |    Chartboost    |     Rewarded Video     |`5cfaa8cee8d17f0001ffb290`|
 |    Facebook    |     Rewarded Video     |`5cfaa838aede570001d55538`|
@@ -323,17 +317,3 @@ Use the below zoneId to request and display ads for each AdNetwork and any adver
 |    AppLovin    |     Rewarded Video     |`5d3eb48c3aef7a0001406f84`|
 |    AppLovin    |     Interstitial     |`5d3eb4fa3aef7a0001406f85`|
 |    AppLovin    |     Standard     |`5d3eb5337a9b060001892441`|
-|    Vungle    |     Rewarded Video     |`5d3eb55a7a9b060001892442`|
-|    Vungle    |     Interstitial     |`5d3eb56d3aef7a0001406f86`|
-
-
-When you use facebook, the following text is printed in logcat.
-```
-When testing your app with Facebook's ad units you must specify the device hashed ID to ensure the delivery of test ads, add the following code before loading an ad: AdSettings.addTestDevice("YOUR_DEVICE_HASH");
-```
-
-To see the Facebook test ad, give your device's hash value to the Tapsellplus library from this method.
-
-```java
-TapsellPlus.addFacebookTestDevice("YOUR_DEVICE_HASH");
-```
