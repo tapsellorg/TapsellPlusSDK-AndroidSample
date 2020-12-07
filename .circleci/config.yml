@@ -1,7 +1,7 @@
 version: 2
 defaults: &defaults
   docker:
-    - image: tapsellorg/android-sdk:v3.4.1
+    - image: tapsellorg/android-sdk:v3.5.0
 
 jobs:
 
