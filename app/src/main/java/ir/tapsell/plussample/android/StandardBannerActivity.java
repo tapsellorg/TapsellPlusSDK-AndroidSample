@@ -20,7 +20,7 @@ public class StandardBannerActivity extends AppCompatActivity {
         TapsellPlus.showBannerAd(
                 this, findViewById(R.id.standardBanner),
                 BuildConfig.TAPSELL_STANDARD_BANNER,
-                TapsellPlusBannerType.BANNER_320x100,
+                TapsellPlusBannerType.BANNER_320x50,
                 new AdRequestCallback() {
                     @Override
                     public void response() {

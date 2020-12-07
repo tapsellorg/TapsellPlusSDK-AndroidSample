@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.TapsellPlus;
@@ -34,16 +35,18 @@ public class RewardedVideoActivity extends AppCompatActivity {
     }
 
     private void requestAd() {
+
         TapsellPlus.requestRewardedVideo(
                 this, BuildConfig.TAPSELL_REWARDED_VIDEO,
                 new AdRequestCallback() {
                     @Override
                     public void response() {
+
+                        Log.d(TAG, "Ad Response");
                         if (isDestroyed())
                             return;
 
                         btShow.setEnabled(true);
-                        Log.d(TAG, "Ad Response");
                     }
 
                     @Override
