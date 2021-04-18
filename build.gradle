@@ -39,7 +39,7 @@ allprojects {
          * Versions prior to v1.2.3 are accessible via this URL,
          * However, for later packages, this URL is no longer needed
          */
-//        maven { url 'https://dl.bintray.com/tapsellorg/maven' }
+        maven { url 'https://dl.bintray.com/tapsellorg/maven' }
 
 
         maven { url "https://adcolony.bintray.com/AdColony" }
