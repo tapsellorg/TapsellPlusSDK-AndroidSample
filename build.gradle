@@ -1,14 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
     repositories {
         jcenter()
         google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
-        
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,11 +17,32 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
 
-        maven { url 'https://dl.bintray.com/tapsellorg/maven' }
-        maven { url  "https://adcolony.bintray.com/AdColony" }
+        jcenter()
+        /**
+         * Since JCenter is shutting down soon,
+         * as of v1.2.3 all Tapsell SDK packages will be accessible
+         * via `mavenCentral()`
+         *
+         * It's worth to mention that until JCenter is alive, all packages
+         * are still mirrored to JCenter from mavenCentral()
+         *
+         * So If you don't add mavenCentral, packages are still available using jcenter
+         *
+         * After JCenter shutdown, Gradle 7.0 will add mavenCentral() by default and will mark jcenter as deprecated,
+         * therefore, no other URL is needed to be added at all
+         */
+//        mavenCentral()
+
+        /**
+         * Versions prior to v1.2.3 are accessible via this URL,
+         * However, for later packages, this URL is no longer needed
+         */
+//        maven { url 'https://dl.bintray.com/tapsellorg/maven' }
+
+
+        maven { url "https://adcolony.bintray.com/AdColony" }
         maven { url "https://chartboostmobile.bintray.com/Chartboost" }
     }
 }
