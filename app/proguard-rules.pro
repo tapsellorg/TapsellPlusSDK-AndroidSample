@@ -184,3 +184,11 @@
 -keepclassmembers class * {
     @android.webkit.JavascriptInterface <methods>;
 }
+
+# TapsellPlus needs their formal names
+-keepnames public class com.google.android.gms.ads.MobileAds
+-keepnames public class com.unity3d.services.monetization.IUnityMonetizationListener
+-keepnames public class com.adcolony.sdk.AdColony
+-keepnames public class com.google.android.gms.ads.identifier.AdvertisingIdClient
+-keepnames public class com.chartboost.sdk.Chartboost
+-keepnames public class com.applovin.sdk.AppLovinSdkSettings
