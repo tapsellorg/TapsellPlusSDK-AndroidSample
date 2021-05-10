@@ -1,5 +1,4 @@
 [![CircleCI](https://circleci.com/gh/tapsellorg/TapsellPlusSDK-AndroidSample.svg?style=svg)](https://circleci.com/gh/tapsellorg/TapsellPlusSDK-AndroidSample)  
-[ ![Download](https://api.bintray.com/packages/tapsellorg/maven/tapsell-plus-sdk-android/images/download.svg) ](https://bintray.com/tapsellorg/maven/tapsell-plus-sdk-android/_latestVersion)
 
 ## <div dir="rtl">پروژه‌ی نمونه‌ی کتاب‌خانه‌ی اندروید تپسل پلاس</div>
 
