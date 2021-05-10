@@ -6,15 +6,21 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import ir.tapsell.plus.AdHolder;
 import ir.tapsell.plus.AdRequestCallback;
+import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.TapsellPlus;
+import ir.tapsell.plus.model.TapsellPlusAdModel;
+import ir.tapsell.plus.model.TapsellPlusErrorModel;
 
 public class NativeBannerActivity extends AppCompatActivity {
-    private FrameLayout adContainer;
-    private AdHolder adHolder;
 
     private static final String TAG = "NativeBannerActivity";
+
+    private AdHolder adHolder;
+    private String responseId;
+    FrameLayout adContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +41,17 @@ public class NativeBannerActivity extends AppCompatActivity {
     }
 
     private void requestAd() {
-        TapsellPlus.requestNativeBanner(
+        TapsellPlus.requestNativeAd(
                 this,
                 BuildConfig.TAPSELL_NATIVE_BANNER,
                 new AdRequestCallback() {
                     @Override
-                    public void response() {
+                    public void response(String s) {
+                        super.response(s);
                         if (isDestroyed())
                             return;
-
                         Log.d(TAG, "Ad Response");
+                        responseId = s;
                         showAd();
                     }
 
@@ -59,6 +66,29 @@ public class NativeBannerActivity extends AppCompatActivity {
     }
 
     private void showAd() {
-        TapsellPlus.showAd(this, adHolder, BuildConfig.TAPSELL_NATIVE_BANNER);
+        TapsellPlus.showNativeAd(this, responseId, adHolder,
+                new AdShowListener() {
+                    @Override
+                    public void onOpened(TapsellPlusAdModel tapsellPlusAdModel) {
+                        super.onOpened(tapsellPlusAdModel);
+                        Log.d(TAG, "Ad Open");
+                    }
+
+                    @Override
+                    public void onError(TapsellPlusErrorModel tapsellPlusErrorModel) {
+                        super.onError(tapsellPlusErrorModel);
+                        Log.e("onError", tapsellPlusErrorModel.toString());
+                    }
+                });
+    }
+
+    private void destroyAd() {
+        TapsellPlus.destroyNativeBanner(NativeBannerActivity.this, responseId);
+    }
+
+    @Override
+    protected void onDestroy() {
+        destroyAd();
+        super.onDestroy();
     }
 }

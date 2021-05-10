@@ -4,16 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btRequest"
+    <Button
+        android:id="@+id/request_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/request" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btShow"
+    <Button
+        android:id="@+id/show_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/show" />
+
+    <TextView
+        android:id="@+id/log_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="#ddd"
+        android:padding="8dp" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

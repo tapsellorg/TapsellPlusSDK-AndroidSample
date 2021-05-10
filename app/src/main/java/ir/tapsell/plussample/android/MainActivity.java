@@ -2,11 +2,15 @@ package ir.tapsell.plussample.android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import ir.tapsell.plus.TapsellPlus;
+import ir.tapsell.plus.TapsellPlusInitListener;
+import ir.tapsell.plus.model.AdNetworkError;
+import ir.tapsell.plus.model.AdNetworks;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +19,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TapsellPlus.initialize(this, BuildConfig.TAPSELL_KEY);
+        TapsellPlus.initialize(this, BuildConfig.TAPSELL_KEY, new TapsellPlusInitListener() {
+            @Override
+            public void onInitializeSuccess(AdNetworks adNetworks) {
+                Log.d("onInitializeSuccess", adNetworks.name());
+            }
+
+            @Override
+            public void onInitializeFailed(AdNetworks adNetworks, AdNetworkError adNetworkError) {
+                Log.e("onInitializeFailed", "ad network: " + adNetworks.name() + ", error: " + adNetworkError.getErrorMessage());
+            }
+        });
+
+        TapsellPlus.setGDPRConsent(this, true);
+
         init();
     }
 

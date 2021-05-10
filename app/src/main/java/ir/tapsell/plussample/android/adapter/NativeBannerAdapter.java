@@ -16,7 +16,6 @@ import java.util.List;
 import ir.tapsell.plus.AdHolder;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.TapsellPlus;
-import ir.tapsell.plussample.android.BuildConfig;
 import ir.tapsell.plussample.android.R;
 import ir.tapsell.plussample.android.enums.ListItemType;
 import ir.tapsell.plussample.android.model.ItemList;
@@ -101,27 +100,11 @@ public class NativeBannerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         void bindView(int position) {
-            TapsellPlus.showAd(
+            TapsellPlus.showNativeAd(
                     activity,
-                    adHolder,
-                    BuildConfig.TAPSELL_NATIVE_BANNER,
                     items.get(position).id,
+                    adHolder,
                     new AdShowListener() {
-                        @Override
-                        public void onOpened() {
-                        }
-
-                        @Override
-                        public void onClosed() {
-                        }
-
-                        @Override
-                        public void onRewarded() {
-                        }
-
-                        @Override
-                        public void onError(String s) {
-                        }
                     });
         }
     }

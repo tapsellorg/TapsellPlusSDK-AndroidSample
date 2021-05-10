@@ -4,6 +4,7 @@
     <string name="interstitial">Interstitial</string>
     <string name="show">Show</string>
     <string name="request">Request</string>
+    <string name="destroy">Destroy</string>
     <string name="native_banner">Native Banner</string>
     <string name="native_banner_in_list">Native Banner In List</string>
     <string name="standard_banner">Standard Banner</string>

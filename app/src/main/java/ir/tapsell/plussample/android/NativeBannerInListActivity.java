@@ -94,7 +94,7 @@ public class NativeBannerInListActivity extends AppCompatActivity {
     }
 
     private void getNativeBannerAd() {
-        TapsellPlus.requestNativeBanner(
+        TapsellPlus.requestNativeAd(
                 this, BuildConfig.TAPSELL_NATIVE_BANNER, new AdRequestCallback() {
                     @Override
                     public void response(String adId) {

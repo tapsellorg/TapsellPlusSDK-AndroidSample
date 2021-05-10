@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion '29.0.3'
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "ir.tapsell.plussample.android"
@@ -22,7 +22,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -34,30 +34,31 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
 
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:1.2.6'
+    // for TapsellPlus
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:2.1.0'
+
 
     //for adMob
-    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+    implementation 'com.google.android.gms:play-services-ads:19.8.0'
 
     //for unityAds
-    implementation 'com.unity3d.ads:unity-ads:3.5.1'
+    implementation 'com.unity3d.ads:unity-ads:3.7.1'
 
     //for chartboost
-    implementation 'com.chartboost:chartboost-sdk:8.1.0'
+    implementation 'com.chartboost:chartboost-sdk:8.2.0'
 
     //for applovin
-    implementation 'com.applovin:applovin-sdk:9.7.2'
+    implementation 'com.applovin:applovin-sdk:9.15.3'
 
     //for adcolony
     implementation 'com.adcolony:sdk:4.5.0'
 
-    implementation ("com.google.android.gms:play-services-base:17.5.0"){
+    implementation ("com.google.android.gms:play-services-base:17.6.0"){
         exclude group: 'com.android.support'
     }
     implementation ("com.google.android.gms:play-services-ads-identifier:17.0.0"){
