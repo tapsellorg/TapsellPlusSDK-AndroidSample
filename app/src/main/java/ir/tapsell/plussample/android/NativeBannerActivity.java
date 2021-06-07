@@ -17,10 +17,9 @@ import ir.tapsell.plus.model.TapsellPlusErrorModel;
 public class NativeBannerActivity extends AppCompatActivity {
 
     private static final String TAG = "NativeBannerActivity";
-
+    FrameLayout adContainer;
     private AdHolder adHolder;
     private String responseId;
-    FrameLayout adContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +45,12 @@ public class NativeBannerActivity extends AppCompatActivity {
                 BuildConfig.TAPSELL_NATIVE_BANNER,
                 new AdRequestCallback() {
                     @Override
-                    public void response(String s) {
-                        super.response(s);
+                    public void response(TapsellPlusAdModel tapsellPlusAdModel) {
+                        super.response(tapsellPlusAdModel);
                         if (isDestroyed())
                             return;
                         Log.d(TAG, "Ad Response");
-                        responseId = s;
+                        responseId = tapsellPlusAdModel.getResponseId();
                         showAd();
                     }
 

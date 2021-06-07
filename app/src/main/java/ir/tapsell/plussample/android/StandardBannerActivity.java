@@ -45,13 +45,13 @@ public class StandardBannerActivity extends AppCompatActivity {
                 TapsellPlusBannerType.BANNER_320x50,
                 new AdRequestCallback() {
                     @Override
-                    public void response(String s) {
-                        super.response(s);
+                    public void response(TapsellPlusAdModel tapsellPlusAdModel) {
+                        super.response(tapsellPlusAdModel);
                         if (isDestroyed())
                             return;
 
                         Log.d(TAG, "response");
-                        responseId = s;
+                        responseId = tapsellPlusAdModel.getResponseId();
                         showButton.setEnabled(true);
                     }
 

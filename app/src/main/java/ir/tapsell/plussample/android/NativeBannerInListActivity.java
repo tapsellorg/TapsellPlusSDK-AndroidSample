@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.TapsellPlus;
+import ir.tapsell.plus.model.TapsellPlusAdModel;
 import ir.tapsell.plussample.android.adapter.NativeBannerAdapter;
 import ir.tapsell.plussample.android.enums.ListItemType;
 import ir.tapsell.plussample.android.model.ItemList;
@@ -96,9 +97,11 @@ public class NativeBannerInListActivity extends AppCompatActivity {
     private void getNativeBannerAd() {
         TapsellPlus.requestNativeAd(
                 this, BuildConfig.TAPSELL_NATIVE_BANNER, new AdRequestCallback() {
+
                     @Override
-                    public void response(String adId) {
-                        showAd(adId);
+                    public void response(TapsellPlusAdModel tapsellPlusAdModel) {
+                        super.response(tapsellPlusAdModel);
+                        showAd(tapsellPlusAdModel.getResponseId());
                     }
 
                     @Override

@@ -45,12 +45,12 @@ public class RewardedVideoActivity extends AppCompatActivity {
                 this, BuildConfig.TAPSELL_REWARDED_VIDEO,
                 new AdRequestCallback() {
                     @Override
-                    public void response(String s) {
-                        super.response(s);
+                    public void response(TapsellPlusAdModel tapsellPlusAdModel) {
+                        super.response(tapsellPlusAdModel);
                         if (isDestroyed())
                             return;
 
-                        responseId = s;
+                        responseId = tapsellPlusAdModel.getResponseId();
 
                         showLogToDeveloper("response", Log.DEBUG);
 
