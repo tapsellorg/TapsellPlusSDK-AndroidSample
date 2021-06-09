@@ -1,6 +1,8 @@
 [![CircleCI](https://circleci.com/gh/tapsellorg/TapsellPlusSDK-AndroidSample.svg?style=svg)](https://circleci.com/gh/tapsellorg/TapsellPlusSDK-AndroidSample)  
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser/badge.svg?style=plastic)](https://img.shields.io/nexus/r/ir.tapsell.plus/tapsell-plus-sdk-android?label=Tapsell%20Plus%20Android&server=https%3A%2F%2Fs01.oss.sonatype.org)
+[![Maven Central](https://img.shields.io/maven-central/v/ir.tapsell.plus/tapsell-plus-sdk-android)](https://search.maven.org/artifact/ir.tapsell.plus/tapsell-plus-sdk-android)
+
+
 
 ## <div dir="rtl">پروژه‌ی نمونه‌ی کتاب‌خانه‌ی اندروید تپسل پلاس</div>
 
