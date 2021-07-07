@@ -21,6 +21,7 @@ allprojects {
         google()
 
         mavenCentral()
+        mavenCentral { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 

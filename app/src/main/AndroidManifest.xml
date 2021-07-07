@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:fullBackupContent">
-
+        <activity android:name=".VastActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize">
@@ -24,27 +24,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RewardedVideoActivity"
             android:label="@string/rewarded_video" />
-
         <activity
             android:name=".InterstitialActivity"
             android:label="@string/interstitial" />
-
         <activity
             android:name=".NativeBannerActivity"
             android:label="@string/native_banner" />
-
         <activity
             android:name=".StandardBannerActivity"
             android:label="@string/standard_banner" />
-
         <activity
             android:name=".NativeBannerInListActivity"
             android:label="@string/native_banner_in_list" />
-
     </application>
 
 </manifest>
