@@ -3,6 +3,8 @@ package ir.tapsell.plussample.android;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,6 +58,26 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
 
         playerView = findViewById(R.id.player_view);
         tvLog = findViewById(R.id.tvLog);
+        Button requestButton = findViewById(R.id.btnRequest);
+        requestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                prepareVideo();
+            }
+        });
+    }
+
+    private void prepareVideo() {
+
+        // Create the MediaItem to play, specifying the content URI and ad tag URI.
+        Uri contentUri = Uri.parse("https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4");
+        Uri adTagUri = Uri.parse(TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL));
+        MediaItem mediaItem = new MediaItem.Builder().setUri(contentUri).setAdTagUri(adTagUri).build();
+
+        // Prepare the content and ad to be played with the SimpleExoPlayer.
+        player.setMediaItem(mediaItem);
+        player.prepare();
     }
 
     @Override
@@ -131,17 +153,8 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
         playerView.setPlayer(player);
         adsLoader.setPlayer(player);
 
-        // Create the MediaItem to play, specifying the content URI and ad tag URI.
-        Uri contentUri = Uri.parse("https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4");
-        Uri adTagUri = Uri.parse(TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL));
-        MediaItem mediaItem = new MediaItem.Builder().setUri(contentUri).setAdTagUri(adTagUri).build();
-
-        // Prepare the content and ad to be played with the SimpleExoPlayer.
-        player.setMediaItem(mediaItem);
-        player.prepare();
-
         // Set PlayWhenReady. If true, content and ads will autoplay.
-        player.setPlayWhenReady(false);
+        player.setPlayWhenReady(true);
     }
 
     /**
