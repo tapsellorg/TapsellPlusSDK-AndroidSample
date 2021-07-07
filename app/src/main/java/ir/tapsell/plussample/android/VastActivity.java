@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.ads.interactivemedia.v3.api.AdErrorEvent;
 import com.google.ads.interactivemedia.v3.api.AdEvent;
+import com.google.ads.interactivemedia.v3.api.CompanionAdSlot;
 import com.google.ads.interactivemedia.v3.api.ImaSdkFactory;
 import com.google.ads.interactivemedia.v3.api.ImaSdkSettings;
 import com.google.android.exoplayer2.MediaItem;
@@ -23,6 +25,8 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import java.util.ArrayList;
+
 import ir.tapsell.plus.TapsellPlus;
 
 public class VastActivity extends AppCompatActivity implements AdEvent.AdEventListener,
@@ -34,6 +38,9 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
     private PlayerView playerView;
     private SimpleExoPlayer player;
     private ImaAdsLoader adsLoader;
+    private ViewGroup companionViewGroup;
+    private ImaSdkFactory sdkFactory;
+    private ArrayList<CompanionAdSlot> companionAdSlots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +49,18 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
 
         initUI();
 
-        ImaSdkFactory sdkFactory = ImaSdkFactory.getInstance();
+        sdkFactory = ImaSdkFactory.getInstance();
         ImaSdkSettings settings = sdkFactory.createImaSdkSettings();
         settings.setLanguage("fa");
+
+        addCompanionAds();
 
         // Create an AdsLoader.
         adsLoader = new ImaAdsLoader.Builder(/* context= */ this)
                 .setImaSdkSettings(settings)
                 .setAdEventListener(this)
                 .setAdErrorListener(this)
+                .setCompanionAdSlots(companionAdSlots)
                 .build();
     }
 
@@ -66,6 +76,17 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
                 prepareVideo();
             }
         });
+    }
+
+    private void addCompanionAds() {
+
+        companionViewGroup = findViewById(R.id.companionAdSlot);
+        companionViewGroup.setVisibility(View.VISIBLE);
+        CompanionAdSlot companionAdSlot = sdkFactory.createCompanionAdSlot();
+        companionAdSlot.setContainer(companionViewGroup);
+        companionAdSlot.setSize(200, 200);
+        companionAdSlots = new ArrayList<>();
+        companionAdSlots.add(companionAdSlot);
     }
 
     private void prepareVideo() {
@@ -175,6 +196,12 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
         switch (event.getType()) {
             case AD_PROGRESS:
                 // Do nothing or else log are filled by these messages.
+                break;
+            case COMPLETED:
+            case SKIPPED:
+
+                // To hide companion ads after the ads finished
+                companionViewGroup.setVisibility(View.GONE);
                 break;
             default:
                 tvLog.append(event.getType().name() + "\n");

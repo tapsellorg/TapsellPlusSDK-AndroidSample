@@ -19,6 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:id="@+id/companionAdSlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:textAlignment="center" />
+
     <TextView
         android:id="@+id/tvLog"
         android:layout_width="match_parent"
