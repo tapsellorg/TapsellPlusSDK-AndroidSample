@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText"
+    android:padding="8dp"
+    android:orientation="vertical"
+    tools:context=".NativeVideoActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/request_button"
+        android:text="Request Native Video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/show_button"
+        android:text="Show Native Video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/adContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

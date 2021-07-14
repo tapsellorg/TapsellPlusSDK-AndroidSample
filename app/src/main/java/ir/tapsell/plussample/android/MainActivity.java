@@ -48,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
         btNativeBanner.setOnClickListener(v -> startActivity(NativeBannerActivity.class));
         btStandardBanner.setOnClickListener(v -> startActivity(StandardBannerActivity.class));
         btNativeBannerInList.setOnClickListener(v -> startActivity(NativeBannerInListActivity.class));
+        findViewById(R.id.btNativeVideo).setOnClickListener(v -> startActivity(NativeVideoActivity.class));
     }
 
-    private void startActivity(Class cla) {
+    private void startActivity(Class<?> cla) {
         Intent intent = new Intent(this, cla);
         startActivity(intent);
     }
