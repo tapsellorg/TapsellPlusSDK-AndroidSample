@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TapsellPlus.setGDPRConsent(this, true);
+        TapsellPlus.setDebugMode(Log.DEBUG);
 
         init();
     }
