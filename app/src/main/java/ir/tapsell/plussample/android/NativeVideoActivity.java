@@ -44,8 +44,13 @@ public class NativeVideoActivity extends AppCompatActivity {
     }
 
     private void showTheRequestedAd() {
+        if (responseId.isEmpty()) {
+            Toast.makeText(this, "ResponseId is empty. Request an ad first", Toast.LENGTH_SHORT).show();
+            return;
+        }
         TapsellPlus.showNativeVideo(this, responseId, new TapsellPlusVideoAdHolder.Builder()
-                .setContentViewTemplate(ir.tapsell.sdk.R.layout.tapsell_content_video_ad_template)
+                .setContentViewTemplate(R.layout.native_vid_template)
+                .setAppInstallationViewTemplate(ir.tapsell.sdk.R.layout.tapsell_app_installation_video_ad_template)
                 .setAdContainer(findViewById(R.id.adContainer))
                 .build(), new AdShowListener() {
             @Override
