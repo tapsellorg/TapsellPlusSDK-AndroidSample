@@ -3,6 +3,8 @@ package ir.tapsell.plussample.android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import ir.tapsell.plus.AdRequestCallback;
@@ -11,6 +13,7 @@ import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.TapsellPlusVideoAdHolder;
 import ir.tapsell.plus.model.TapsellPlusAdModel;
 import ir.tapsell.plus.model.TapsellPlusErrorModel;
+import ir.tapsell.sdk.nativeads.views.videoplayer.VideoContainer;
 
 public class NativeVideoActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class NativeVideoActivity extends AppCompatActivity {
 
         findViewById(R.id.request_button).setOnClickListener(v -> requestAd());
         findViewById(R.id.show_button).setOnClickListener(v -> showTheRequestedAd());
+        findViewById(R.id.remove_button).setOnClickListener(v -> removeAd());
 
     }
 
@@ -48,6 +52,7 @@ public class NativeVideoActivity extends AppCompatActivity {
             Toast.makeText(this, "ResponseId is empty. Request an ad first", Toast.LENGTH_SHORT).show();
             return;
         }
+
         TapsellPlus.showNativeVideo(this, responseId, new TapsellPlusVideoAdHolder.Builder()
                 .setContentViewTemplate(R.layout.native_vid_template)
                 .setAppInstallationViewTemplate(ir.tapsell.sdk.R.layout.tapsell_app_installation_video_ad_template)
@@ -66,5 +71,14 @@ public class NativeVideoActivity extends AppCompatActivity {
                 Toast.makeText(NativeVideoActivity.this, "Oops! " + tapsellPlusErrorModel.getErrorMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void removeAd() {
+        ViewGroup nativeVideoAdContainer = findViewById(R.id.adContainer);
+        if (nativeVideoAdContainer == null) {
+            Toast.makeText(this, "View does not exist", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        nativeVideoAdContainer.removeAllViews();
     }
 }
