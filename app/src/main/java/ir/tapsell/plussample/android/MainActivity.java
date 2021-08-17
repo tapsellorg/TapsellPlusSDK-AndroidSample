@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         View btNativeBanner = findViewById(R.id.btNativeBanner);
         View btStandardBanner = findViewById(R.id.btStandardBanner);
         View btNativeBannerInList = findViewById(R.id.btNativeBannerInList);
+        View btVast = findViewById(R.id.btVast);
 
         btRewardedVideo.setOnClickListener(v -> startActivity(RewardedVideoActivity.class));
         btInterstitial.setOnClickListener(v -> startActivity(InterstitialActivity.class));
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btStandardBanner.setOnClickListener(v -> startActivity(StandardBannerActivity.class));
         btNativeBannerInList.setOnClickListener(v -> startActivity(NativeBannerInListActivity.class));
         findViewById(R.id.btNativeVideo).setOnClickListener(v -> startActivity(NativeVideoActivity.class));
+        btVast.setOnClickListener(v -> startActivity(VastActivity.class));
     }
 
     private void startActivity(Class<?> cla) {

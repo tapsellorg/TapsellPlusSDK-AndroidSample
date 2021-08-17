@@ -19,6 +19,7 @@ android {
         buildConfigField "String", "TAPSELL_NATIVE_BANNER", "\"5cfaa9deaede570001d5553a\""
         buildConfigField "String", "TAPSELL_NATIVE_VIDEO", "\"60edcf8ad3459c17f019d36b\""
         buildConfigField "String", "TAPSELL_STANDARD_BANNER", "\"5cfaaa30e8d17f0001ffb294\""
+        buildConfigField "String", "TAPSELL_VAST_PREROLL", "\"60e441ff537bfb4073746249\""
     }
 
     buildTypes {
@@ -36,7 +37,7 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
@@ -66,4 +67,9 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation 'com.google.android.material:material:1.4.0'
+
+    // for Vast (PreRoll)
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.15.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
+    implementation 'com.google.android.exoplayer:extension-ima:2.15.0'
 }

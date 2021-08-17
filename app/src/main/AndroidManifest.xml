@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:fullBackupContent">
         <activity android:name=".NativeVideoActivity"></activity>
+        <activity android:name=".VastActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize">

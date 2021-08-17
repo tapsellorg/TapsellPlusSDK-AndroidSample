@@ -40,4 +40,10 @@
         android:layout_height="wrap_content"
         android:text="@string/native_video" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btVast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vast" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
