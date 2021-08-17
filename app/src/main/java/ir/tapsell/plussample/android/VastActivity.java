@@ -84,7 +84,7 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
         companionViewGroup.setVisibility(View.VISIBLE);
         CompanionAdSlot companionAdSlot = sdkFactory.createCompanionAdSlot();
         companionAdSlot.setContainer(companionViewGroup);
-        companionAdSlot.setSize(200, 200);
+        companionAdSlot.setSize(320, 50);
         companionAdSlots = new ArrayList<>();
         companionAdSlots.add(companionAdSlot);
     }
@@ -92,8 +92,10 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
     private void prepareVideo() {
 
         // Create the MediaItem to play, specifying the content URI and ad tag URI.
+        String tag = TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL);
+        Log.e("TAG", tag);
         Uri contentUri = Uri.parse("https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4");
-        Uri adTagUri = Uri.parse(TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL));
+        Uri adTagUri = Uri.parse(tag);
         MediaItem mediaItem = new MediaItem.Builder().setUri(contentUri).setAdTagUri(adTagUri).build();
 
         // Prepare the content and ad to be played with the SimpleExoPlayer.
