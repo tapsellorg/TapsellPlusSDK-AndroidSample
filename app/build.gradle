@@ -42,7 +42,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // for TapsellPlus
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:2.1.4'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:2.1.5'
 
 
     //for adMob
