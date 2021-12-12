@@ -40,6 +40,11 @@
         <activity
             android:name=".NativeBannerInListActivity"
             android:label="@string/native_banner_in_list" />
+
+        <!--  Such thing is needed when using Admob v20.x - Please visit https://docs.tapsell.ir/plus-sdk/android/add-adnetworks/ for more info -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>
