@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,6 +42,7 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
     private ViewGroup companionViewGroup;
     private ImaSdkFactory sdkFactory;
     private ArrayList<CompanionAdSlot> companionAdSlots;
+    private boolean isShowing=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,13 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
             @Override
             public void onClick(View v) {
 
-                prepareVideo();
+                if (!isShowing){
+                    isShowing = true;
+                    prepareVideo();
+
+                }else {
+                    Toast.makeText(VastActivity.this, "wait for complete ALL ADS", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -195,6 +203,8 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
     @Override
     public void onAdEvent(AdEvent event) {
         switch (event.getType()) {
+            case STARTED:
+                companionViewGroup.setVisibility(View.VISIBLE);
             case AD_PROGRESS:
                 // Do nothing or else log are filled by these messages.
                 break;
@@ -202,8 +212,11 @@ public class VastActivity extends AppCompatActivity implements AdEvent.AdEventLi
             case SKIPPED:
 
                 // To hide companion ads after the ads finished
-                companionViewGroup.setVisibility(View.GONE);
+                //companionViewGroup.setVisibility(View.GONE);
                 break;
+            case ALL_ADS_COMPLETED:
+                isShowing = false;
+                companionViewGroup.setVisibility(View.GONE);
             default:
                 tvLog.append(event.getType().name() + "\n");
                 break;
