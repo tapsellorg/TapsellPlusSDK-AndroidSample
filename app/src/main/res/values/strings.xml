@@ -10,5 +10,6 @@
     <string name="native_video">Native Video</string>
     <string name="standard_banner">Standard Banner</string>
     <string name="vast">Vast (PreRoll)</string>
+    <string name="vast_madman">Vast (PreRoll) - Madman</string>
     <string name="request_vast">Request VAST</string>
 </resources>

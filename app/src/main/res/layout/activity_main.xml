@@ -46,4 +46,10 @@
         android:layout_height="wrap_content"
         android:text="@string/vast" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btVastMadman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vast_madman" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
