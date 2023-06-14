@@ -9,6 +9,7 @@
     <string name="native_banner_in_list">Native Banner In List</string>
     <string name="native_video">Native Video</string>
     <string name="standard_banner">Standard Banner</string>
-    <string name="vast">Vast (PreRoll)</string>
+    <string name="vast_video_player">Vast (PreRoll) - Video Player</string>
+    <string name="vast_exo_player">Vast (PreRoll) - Exo Player</string>
     <string name="request_vast">Request VAST</string>
 </resources>
