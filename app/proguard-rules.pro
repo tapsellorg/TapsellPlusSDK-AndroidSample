@@ -192,3 +192,35 @@
 -keepnames public class com.google.android.gms.ads.identifier.AdvertisingIdClient
 -keepnames public class com.chartboost.sdk.Chartboost
 -keepnames public class com.applovin.sdk.AppLovinSdkSettings
+
+# Vunvle Rules
+-keep class com.vungle.warren.AdConfig
+-keep class com.vungle.warren.InitCallback
+-keep class com.vungle.warren.LoadAdCallback
+-keep class com.vungle.warren.PlayAdCallback
+-keep class com.vungle.warren.Vungle$Consent
+-keep class com.vungle.warren.Vungle
+-dontwarn com.vungle.warren.AdConfig
+-dontwarn com.vungle.warren.InitCallback
+-dontwarn com.vungle.warren.LoadAdCallback
+-dontwarn com.vungle.warren.PlayAdCallback
+-dontwarn com.vungle.warren.Vungle$Consent
+-dontwarn com.vungle.warren.Vungle
+
+# FaceBook sdk Rules
+-keep class com.facebook.FacebookSdk
+-keep class com.facebook.ads.AudienceNetworkAds$InitListener
+-keep class com.facebook.ads.AudienceNetworkAds$InitSettingsBuilder
+-keep class com.facebook.ads.AudienceNetworkAds
+-keep class com.facebook.ads.InterstitialAd
+-keep class com.facebook.ads.InterstitialAdListener
+-keep class com.facebook.ads.RewardedVideoAd
+-keep class com.facebook.ads.RewardedVideoAdListener
+-dontwarn com.facebook.FacebookSdk
+-dontwarn com.facebook.ads.AudienceNetworkAds$InitListener
+-dontwarn com.facebook.ads.AudienceNetworkAds$InitSettingsBuilder
+-dontwarn com.facebook.ads.AudienceNetworkAds
+-dontwarn com.facebook.ads.InterstitialAd
+-dontwarn com.facebook.ads.InterstitialAdListener
+-dontwarn com.facebook.ads.RewardedVideoAd
+-dontwarn com.facebook.ads.RewardedVideoAdListener

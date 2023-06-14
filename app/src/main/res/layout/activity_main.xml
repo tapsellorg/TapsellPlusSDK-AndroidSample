@@ -41,9 +41,15 @@
         android:text="@string/native_video" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btVast"
+        android:id="@+id/btVastVideoPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/vast" />
+        android:text="@string/vast_video_player" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btVastExoPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vast_exo_player" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
