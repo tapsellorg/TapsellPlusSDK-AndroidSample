@@ -90,8 +90,7 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
     private void prepareVideo() {
 
         // Create the MediaItem to play, specifying the content URI and ad tag URI.
-        String tag = "https://apimocha.com/tapsellvast/vast";
-//        String tag = TapsellPlus.getVastTag(Constants.TAPSELL_VAST_PREROLL);
+        String tag = TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL);
         Uri contentUri = Uri.parse(SAMPLE_VIDEO_URL);
         Uri adTagUri = Uri.parse(tag);
         MediaItem.AdsConfiguration adsConfiguration = new MediaItem.AdsConfiguration.Builder(adTagUri).build();
