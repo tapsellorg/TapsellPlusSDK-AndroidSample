@@ -171,7 +171,9 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        tapsellPrerollAd.destroyAd();
+        if (tapsellPrerollAd != null) {
+            tapsellPrerollAd.destroyAd();
+        }
         releasePlayer();
         super.onDestroy();
     }
