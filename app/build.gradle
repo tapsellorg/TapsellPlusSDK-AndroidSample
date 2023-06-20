@@ -63,7 +63,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
 
     // for TapsellPlus
-    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:2.1.9-rc04'
+    implementation 'ir.tapsell.plus:tapsell-plus-sdk-android:2.1.9'
 
     //for adMob
     implementation 'com.google.android.gms:play-services-ads:21.5.0'
@@ -86,6 +86,17 @@ dependencies {
     implementation ("com.google.android.gms:play-services-ads-identifier:18.0.1"){
         exclude group: 'com.android.support'
     }
+
+    // For Mintegral - NOTE: Add custom repository (explained after this)
+    implementation "com.mbridge.msdk.oversea:videojs:16.3.91"
+    implementation "com.mbridge.msdk.oversea:mbbanner:16.3.91"
+    implementation "com.mbridge.msdk.oversea:mbjscommon:16.3.91"
+    implementation "com.mbridge.msdk.oversea:playercommon:16.3.91"
+    implementation "com.mbridge.msdk.oversea:reward:16.3.91"
+    implementation "com.mbridge.msdk.oversea:videocommon:16.3.91"
+    implementation "com.mbridge.msdk.oversea:same:16.3.91"
+    implementation "com.mbridge.msdk.oversea:interstitialvideo:16.3.91"
+
     implementation 'com.google.android.material:material:1.9.0'
 
     // for Vast (PreRoll)

@@ -83,18 +83,24 @@ public class VideoPlayerVastActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        tapsellPrerollAd.resumeAd();
+        if (tapsellPrerollAd != null) {
+            tapsellPrerollAd.resumeAd();
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        tapsellPrerollAd.pauseAd();
+        if (tapsellPrerollAd != null) {
+            tapsellPrerollAd.pauseAd();
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        tapsellPrerollAd.destroyAd();
+        if (tapsellPrerollAd != null) {
+            tapsellPrerollAd.destroyAd();
+        }
     }
 }
