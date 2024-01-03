@@ -34,7 +34,7 @@ public class NativeBannerActivity extends AppCompatActivity {
         adContainer = findViewById(R.id.adContainer);
 
         adHolder = TapsellPlus.createAdHolder(
-                this, adContainer, R.layout.native_banner);
+                this, adContainer, ir.tapsell.plus.R.layout.native_banner);
 
         requestAd();
     }
