@@ -8,18 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.media3.common.MediaItem;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory;
+import androidx.media3.ui.PlayerView;
 
 import com.google.ads.interactivemedia.v3.api.AdErrorEvent;
 import com.google.ads.interactivemedia.v3.api.AdEvent;
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.source.DefaultMediaSourceFactory;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.ui.StyledPlayerView;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultDataSource;
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
-import com.google.android.exoplayer2.util.Util;
 
 import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.VastRequestListener;
@@ -33,7 +28,7 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
     private static final String SAMPLE_VIDEO_URL = "https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4";
 
     private TextView tvLog;
-    private StyledPlayerView playerView;
+    private PlayerView playerView;
     private ExoPlayer player;
     private ViewGroup adUiContainer;
     private ViewGroup companionContainer;
@@ -65,13 +60,8 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
             return;
         }
         // Set up the factory for media sources, passing the ads loader and ad view providers.
-        DataSource.Factory dataSourceFactory =
-                new DefaultDataSource.Factory(this,
-                        new DefaultHttpDataSource.Factory()
-                                .setUserAgent(Util.getUserAgent(this, getString(R.string.app_name))));
-
-        MediaSource.Factory mediaSourceFactory =
-                new DefaultMediaSourceFactory(dataSourceFactory)
+        DefaultMediaSourceFactory mediaSourceFactory =
+                new DefaultMediaSourceFactory(this)
                         .setLocalAdInsertionComponents(unusedAdTagUri -> adsLoader, playerView);
 
         // Create an ExoPlayer and set it as the player for content and ads.
