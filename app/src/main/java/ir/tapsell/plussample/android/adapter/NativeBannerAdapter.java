@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class NativeBannerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView tvTitle;
+        TextView tvTitle;
 
         ItemHolder(View itemView) {
             super(itemView);
@@ -96,7 +96,7 @@ public class NativeBannerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             super(itemView);
             adContainer = itemView.findViewById(R.id.adContainer);
             adHolder = TapsellPlus.createAdHolder(
-                    activity, adContainer, R.layout.native_banner);
+                    activity, adContainer, ir.tapsell.plus.R.layout.native_banner);
         }
 
         void bindView(int position) {
