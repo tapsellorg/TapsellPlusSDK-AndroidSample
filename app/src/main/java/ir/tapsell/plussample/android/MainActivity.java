@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,11 +19,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
 
         TapsellPlus.initialize(this, BuildConfig.TAPSELL_KEY, new TapsellPlusInitListener() {
             @Override
             public void onInitializeSuccess(AdNetworks adNetworks) {
-                Log.d("onInitializeSuccess", adNetworks.name());
+                TapsellPlus.setGDPRConsent(MainActivity.this, true);
+                TapsellPlus.setDebugMode(Log.DEBUG);
+                Log.d("MainActivity", "OnInitializeSuccess: " + adNetworks.name());
+                Toast.makeText(MainActivity.this, "OnInitializeSuccess", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -30,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("onInitializeFailed", "ad network: " + adNetworks.name() + ", error: " + adNetworkError.getErrorMessage());
             }
         });
-
-        TapsellPlus.setGDPRConsent(MainActivity.this, true);
-        TapsellPlus.setDebugMode(Log.DEBUG);
-
-        init();
     }
 
     private void init() {
