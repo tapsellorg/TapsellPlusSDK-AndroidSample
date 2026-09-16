@@ -9,6 +9,11 @@
     android:orientation="vertical"
     tools:context=".NativeVideoActivity">
 
+    <Spinner
+        android:id="@+id/zone_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/request_button"
         android:text="Request Native Video"

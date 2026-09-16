@@ -2,6 +2,7 @@ package ir.tapsell.plussample.android;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.TapsellPlus;
@@ -16,6 +18,10 @@ import ir.tapsell.plus.model.TapsellPlusAdModel;
 import ir.tapsell.plussample.android.adapter.NativeBannerAdapter;
 import ir.tapsell.plussample.android.enums.ListItemType;
 import ir.tapsell.plussample.android.model.ItemList;
+import ir.tapsell.plussample.android.model.Zone;
+import ir.tapsell.plussample.android.model.ZoneType;
+import ir.tapsell.plussample.android.util.ConfigProvider;
+import ir.tapsell.plussample.android.util.ZoneSpinner;
 
 public class NativeBannerInListActivity extends AppCompatActivity {
 
@@ -26,6 +32,8 @@ public class NativeBannerInListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private NativeBannerAdapter adapter;
+    private Spinner zoneSpinner;
+    private List<Zone> zones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,10 @@ public class NativeBannerInListActivity extends AppCompatActivity {
 
     private void initView() {
         recyclerView = findViewById(R.id.recyclerView);
+
+        zoneSpinner = findViewById(R.id.zone_spinner);
+        zones = ConfigProvider.zonesFor(this, ZoneType.NATIVE);
+        ZoneSpinner.populate(zoneSpinner, zones);
 
         initList();
         getNativeBannerAd();
@@ -95,8 +107,13 @@ public class NativeBannerInListActivity extends AppCompatActivity {
     }
 
     private void getNativeBannerAd() {
+        Zone zone = ZoneSpinner.selectedZone(zoneSpinner, zones);
+        if (zone == null) {
+            Log.d("", "error: no zone selected");
+            return;
+        }
         TapsellPlus.requestNativeAd(
-                this, BuildConfig.TAPSELL_NATIVE_BANNER, new AdRequestCallback() {
+                this, zone.id, new AdRequestCallback() {
 
                     @Override
                     public void response(TapsellPlusAdModel tapsellPlusAdModel) {

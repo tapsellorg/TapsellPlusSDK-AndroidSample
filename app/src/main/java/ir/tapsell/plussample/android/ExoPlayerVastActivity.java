@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +16,16 @@ import androidx.media3.ui.PlayerView;
 import com.google.ads.interactivemedia.v3.api.AdErrorEvent;
 import com.google.ads.interactivemedia.v3.api.AdEvent;
 
+import java.util.List;
+
 import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.VastRequestListener;
+import ir.tapsell.plussample.android.model.Zone;
+import ir.tapsell.plussample.android.model.ZoneType;
+import ir.tapsell.plussample.android.util.ConfigProvider;
+import ir.tapsell.plussample.android.util.ZoneSpinner;
 import ir.tapsell.sdk.preroll.TapsellPrerollAd;
 import ir.tapsell.sdk.preroll.ima.ImaAdsLoader;
-
 
 public class ExoPlayerVastActivity extends AppCompatActivity {
 
@@ -34,6 +39,9 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
     private ViewGroup companionContainer;
     private TapsellPrerollAd tapsellPrerollAd;
     private ImaAdsLoader adsLoader;
+    private Spinner zoneSpinner;
+    private List<Zone> zones;
+    private String tag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +58,21 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
         companionContainer = findViewById(R.id.companion_ad_slot);
 
         tvLog = findViewById(R.id.tvLog);
-        Button requestButton = findViewById(R.id.btnRequest);
-        requestButton.setOnClickListener(v -> requestAd());
+
+        findViewById(R.id.btnRequest).setOnClickListener(v -> requestSelectedZone());
+
+        zoneSpinner = findViewById(R.id.zone_spinner);
+        zones = ConfigProvider.zonesFor(this, ZoneType.PRE_ROLL);
+        ZoneSpinner.populate(zoneSpinner, zones);
+        Zone first = zones.isEmpty() ? null : zones.get(0);
+        tag = first != null ? TapsellPlus.getVastTag(first.id) : null;
+    }
+
+    private void requestSelectedZone() {
+        Zone zone = ZoneSpinner.selectedZone(zoneSpinner, zones);
+        if (zone != null) {
+            requestAd(zone.id);
+        }
     }
 
     private void initializePlayer() {
@@ -80,7 +101,6 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
     private void prepareVideo() {
 
         // Create the MediaItem to play, specifying the content URI and ad tag URI.
-        String tag = TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL);
         Uri contentUri = Uri.parse(SAMPLE_VIDEO_URL);
         Uri adTagUri = Uri.parse(tag);
         MediaItem.AdsConfiguration adsConfiguration = new MediaItem.AdsConfiguration.Builder(adTagUri).build();
@@ -91,12 +111,13 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
         player.prepare();
     }
 
-    private void requestAd() {
+    private void requestAd(String zoneId) {
         tvLog.setText("");
         if (tapsellPrerollAd != null) {
             tapsellPrerollAd.destroyAd();
             releasePlayer();
         }
+        tag = TapsellPlus.getVastTag(zoneId);
         tapsellPrerollAd = TapsellPlus.requestVastAd(
                 this,
                 playerView,
@@ -139,7 +160,7 @@ public class ExoPlayerVastActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if (player == null) {
+        if (player == null && tag != null) {
             initializePlayer();
         }
         if (playerView != null) {

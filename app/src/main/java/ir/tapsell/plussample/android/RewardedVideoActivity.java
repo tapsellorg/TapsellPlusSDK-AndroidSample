@@ -3,16 +3,23 @@ package ir.tapsell.plussample.android;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.model.TapsellPlusAdModel;
 import ir.tapsell.plus.model.TapsellPlusErrorModel;
+import ir.tapsell.plussample.android.model.Zone;
+import ir.tapsell.plussample.android.model.ZoneType;
+import ir.tapsell.plussample.android.util.ConfigProvider;
+import ir.tapsell.plussample.android.util.ZoneSpinner;
 
 public class RewardedVideoActivity extends AppCompatActivity {
 
@@ -20,6 +27,8 @@ public class RewardedVideoActivity extends AppCompatActivity {
 
     private Button showButton;
     private TextView logTextView;
+    private Spinner zoneSpinner;
+    private List<Zone> zones;
     private String responseId;
 
     @Override
@@ -35,14 +44,25 @@ public class RewardedVideoActivity extends AppCompatActivity {
         Button requestButton = findViewById(R.id.request_button);
         showButton = findViewById(R.id.show_button);
         showButton.setEnabled(false);
-        requestButton.setOnClickListener(v -> requestAd());
+        requestButton.setOnClickListener(v -> requestSelectedZone());
         showButton.setOnClickListener(v -> showAd());
+
+        zoneSpinner = findViewById(R.id.zone_spinner);
+        zones = ConfigProvider.zonesFor(this, ZoneType.REWARDED);
+        ZoneSpinner.populate(zoneSpinner, zones);
     }
 
-    private void requestAd() {
+    private void requestSelectedZone() {
+        Zone zone = ZoneSpinner.selectedZone(zoneSpinner, zones);
+        if (zone != null) {
+            requestAd(zone.id);
+        }
+    }
+
+    private void requestAd(String zoneId) {
 
         TapsellPlus.requestRewardedVideoAd(
-                this, BuildConfig.TAPSELL_REWARDED_VIDEO,
+                this, zoneId,
                 new AdRequestCallback() {
                     @Override
                     public void response(TapsellPlusAdModel tapsellPlusAdModel) {

@@ -3,9 +3,12 @@ package ir.tapsell.plussample.android;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 import ir.tapsell.plus.AdRequestCallback;
 import ir.tapsell.plus.AdShowListener;
@@ -13,11 +16,17 @@ import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.TapsellPlusBannerType;
 import ir.tapsell.plus.model.TapsellPlusAdModel;
 import ir.tapsell.plus.model.TapsellPlusErrorModel;
+import ir.tapsell.plussample.android.model.Zone;
+import ir.tapsell.plussample.android.model.ZoneType;
+import ir.tapsell.plussample.android.util.ConfigProvider;
+import ir.tapsell.plussample.android.util.ZoneSpinner;
 
 public class StandardBannerActivity extends AppCompatActivity {
 
     private static final String TAG = "StandardActivity";
     private Button showButton;
+    private Spinner zoneSpinner;
+    private List<Zone> zones;
     private String responseId;
 
     @Override
@@ -34,14 +43,25 @@ public class StandardBannerActivity extends AppCompatActivity {
         showButton = findViewById(R.id.show_button);
         Button destroyButton = findViewById(R.id.destroy_button);
         showButton.setEnabled(false);
-        requestButton.setOnClickListener(v -> requestAd());
+        requestButton.setOnClickListener(v -> requestSelectedZone());
         showButton.setOnClickListener(v -> showAd());
         destroyButton.setOnClickListener(v -> destroyAd());
+
+        zoneSpinner = findViewById(R.id.zone_spinner);
+        zones = ConfigProvider.zonesFor(this, ZoneType.BANNER);
+        ZoneSpinner.populate(zoneSpinner, zones);
     }
 
-    private void requestAd() {
+    private void requestSelectedZone() {
+        Zone zone = ZoneSpinner.selectedZone(zoneSpinner, zones);
+        if (zone != null) {
+            requestAd(zone.id);
+        }
+    }
+
+    private void requestAd(String zoneId) {
         TapsellPlus.requestStandardBannerAd(
-                this, BuildConfig.TAPSELL_STANDARD_BANNER,
+                this, zoneId,
                 TapsellPlusBannerType.BANNER_320x50,
                 new AdRequestCallback() {
                     @Override

@@ -12,6 +12,7 @@ import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.TapsellPlusInitListener;
 import ir.tapsell.plus.model.AdNetworkError;
 import ir.tapsell.plus.model.AdNetworks;
+import ir.tapsell.plussample.android.util.ConfigProvider;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
 
-        TapsellPlus.initialize(this, BuildConfig.TAPSELL_KEY, new TapsellPlusInitListener() {
+        TapsellPlus.initialize(this, ConfigProvider.getSecretKey(this), new TapsellPlusInitListener() {
             @Override
             public void onInitializeSuccess(AdNetworks adNetworks) {
                 TapsellPlus.setGDPRConsent(MainActivity.this, true);

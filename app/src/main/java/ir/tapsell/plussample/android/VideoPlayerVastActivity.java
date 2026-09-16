@@ -2,8 +2,7 @@ package ir.tapsell.plussample.android;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -13,8 +12,14 @@ import com.google.ads.interactivemedia.v3.api.AdErrorEvent;
 import com.google.ads.interactivemedia.v3.api.AdEvent;
 import com.google.ads.interactivemedia.v3.api.AdsLoader;
 
+import java.util.List;
+
 import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.VastRequestListener;
+import ir.tapsell.plussample.android.model.Zone;
+import ir.tapsell.plussample.android.model.ZoneType;
+import ir.tapsell.plussample.android.util.ConfigProvider;
+import ir.tapsell.plussample.android.util.ZoneSpinner;
 import ir.tapsell.sdk.preroll.TapsellPrerollAd;
 
 public class VideoPlayerVastActivity extends AppCompatActivity {
@@ -26,31 +31,44 @@ public class VideoPlayerVastActivity extends AppCompatActivity {
 
     private VideoView videoView;
     private TextView tvLog;
-
-    private String tag;
+    private Spinner zoneSpinner;
+    private List<Zone> zones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vast_video_player);
 
-        ViewGroup adUiContainer = findViewById(R.id.video_player_container);
-        ViewGroup companionContainer = findViewById(R.id.companion_ad_slot);
         videoView = findViewById(R.id.video_player);
-
         tvLog = findViewById(R.id.tvLog);
-        Button btnRequest = findViewById(R.id.btnRequest);
 
-        tag = TapsellPlus.getVastTag(BuildConfig.TAPSELL_VAST_PREROLL);
+        findViewById(R.id.btnRequest).setOnClickListener(v -> requestSelectedZone());
 
+        zoneSpinner = findViewById(R.id.zone_spinner);
+        zones = ConfigProvider.zonesFor(this, ZoneType.PRE_ROLL);
+        ZoneSpinner.populate(zoneSpinner, zones);
+    }
 
+    private void requestSelectedZone() {
+        Zone zone = ZoneSpinner.selectedZone(zoneSpinner, zones);
+        if (zone != null) {
+            requestAd(zone.id);
+        }
+    }
+
+    private void requestAd(String zoneId) {
+        videoView.setVideoPath(SAMPLE_VIDEO_URL);
+        if (tapsellPrerollAd != null) {
+            tapsellPrerollAd.destroyAd();
+        }
+        String tag = TapsellPlus.getVastTag(zoneId);
         tapsellPrerollAd = TapsellPlus.requestVastAd(
                 this,
                 tag,
                 videoView,
                 SAMPLE_VIDEO_URL,
-                adUiContainer,
-                companionContainer,
+                findViewById(R.id.video_player_container),
+                findViewById(R.id.companion_ad_slot),
                 new VastRequestListener() {
                     @Override
                     public void onAdsLoaderCreated(AdsLoader adsLoader) {
@@ -70,13 +88,6 @@ public class VideoPlayerVastActivity extends AppCompatActivity {
                     }
                 }
         );
-
-        btnRequest.setOnClickListener(v -> requestAd());
-    }
-
-
-    private void requestAd() {
-        videoView.setVideoPath(SAMPLE_VIDEO_URL);
         tapsellPrerollAd.requestAd(tag);
     }
 
