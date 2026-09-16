@@ -1,0 +1,51 @@
+name: Android Dynamic Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      TapsellJson:
+        description: 'tapsell.json content'
+        required: true
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v5.2.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup from JSON
+        env:
+          TAPSELL_JSON: ${{ github.event.inputs.TapsellJson }}
+        run: |
+          ASSETS_DIR="app/src/main/assets"
+          mkdir -p "$ASSETS_DIR"
+
+          printf '%s\n' "$TAPSELL_JSON" > "$ASSETS_DIR/tapsell.json"
+
+          echo "ADMOB_APP_KEY=$(jq -r '.["admob-key"]' "$ASSETS_DIR/tapsell.json")" >> "$GITHUB_ENV"
+
+          echo "Wrote tapsell.json (zones: $(jq '.zones | length' "$ASSETS_DIR/tapsell.json"))"
+
+      - name: Update admob key in project files
+        run: |
+          ./scripts/change-app.sh \
+            "${{ env.ADMOB_APP_KEY }}"
+
+      - name: Build Release APK
+        run: ./gradlew :app:assembleRelease
+
+      - name: Upload Release Build to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: app/build/outputs/apk/release/*universal-release*.apk
